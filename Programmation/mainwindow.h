@@ -18,7 +18,7 @@
 #include <QProcess>
 #include <QFontDatabase>
 #include <QInputDialog>
-#include <QSound>
+#include <QMediaPlayer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -64,6 +64,8 @@ public:
     QLabel *Enemy_life;
     QLabel *Hero_life;
 
+    QMediaPlayer *musique = new QMediaPlayer;
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -74,6 +76,11 @@ public:
         QString family = QFontDatabase::applicationFontFamilies(id).at(0);
         QFont font1(family);
         QFont font2(family);
+
+        musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/start_sound.wav"));
+        musique->setVolume(100);
+        musique->play();
+
 
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
@@ -225,26 +232,29 @@ public:
        {
            if (MainWindow->objectName().isEmpty())
                MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-           QSound::play(QApplication::applicationDirPath() + "/ressources/main_sound.wav");
+
+           musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/main_sound.wav"));
+           musique->play();
+
            centralwidget = new QWidget(MainWindow);
            centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
            Attack1 = new QPushButton(centralwidget);
            Attack1->setObjectName(QString::fromUtf8("Attack1"));
-           Attack1->setGeometry(QRect(700, 620, 151, 61));
+           Attack1->setGeometry(QRect(700, 610, 151, 61));
            QFont font;
            font.setPointSize(16);
            Attack1->setFont(font);
            Attack2 = new QPushButton(centralwidget);
            Attack2->setObjectName(QString::fromUtf8("Attack2"));
-           Attack2->setGeometry(QRect(860, 620, 151, 61));
+           Attack2->setGeometry(QRect(860, 610, 151, 61));
            Attack2->setFont(font);
            Attack3 = new QPushButton(centralwidget);
            Attack3->setObjectName(QString::fromUtf8("Attack3"));
-           Attack3->setGeometry(QRect(700, 685, 151, 61));
+           Attack3->setGeometry(QRect(700, 675, 151, 61));
            Attack3->setFont(font);
            Attack4 = new QPushButton(centralwidget);
            Attack4->setObjectName(QString::fromUtf8("Attack4"));
-           Attack4->setGeometry(QRect(860, 685, 151, 61));
+           Attack4->setGeometry(QRect(860, 675, 151, 61));
            Attack4->setFont(font);
            Information = new QTextBrowser(centralwidget);
            Information->setObjectName(QString::fromUtf8("Information"));

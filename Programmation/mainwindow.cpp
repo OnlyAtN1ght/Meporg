@@ -62,45 +62,55 @@ void MainWindow::wolf_function(){
 
 void MainWindow::play(std::string type, std::string name, std::string job){
 
-    Entity *hero;
-    std::list<Entity*> *ennemies;
-    srand((unsigned int)time(0));
-    int nb_ennemies = rand() % 30 + 1;
-
     setupUi_Loading(this);
     setFixedSize(1024, 768);
     setWindowTitle("MePorg - Loading...");
-    QThread::msleep(1000);
+
+    Entity *hero;
+    std::list<Entity*> ennemies;
+    srand((unsigned int)time(0));
+    int nb_ennemies = rand() % 30 + 1;
+
+    qDebug() << "Initializing hero";
+    hero = Game::createHero(name, type, job);
+    qDebug() << "Hero initialized";
+    qDebug() << "Initializing enemies";
+    ennemies = Game::createEnemies(nb_ennemies);
+    qDebug() << "Ennemies initialized";
 
     setupUi_Fight(this) ;
     setFixedSize(1024, 768);
     setWindowTitle("MePorg - Fight !");
 
-   hero = Game::createHero(name, type, job);
-   ennemies = Game::createEnemies(nb_ennemies);
+    HeroDemon *aa = dynamic_cast<HeroDemon*>(hero);
+    HeroHuman *bb = dynamic_cast<HeroHuman*>(hero);
+    HeroWolf *cc = dynamic_cast<HeroWolf*>(hero);
+    HeroWerewolf *dd = dynamic_cast<HeroWerewolf*>(hero);
 
-    if (instanceof<HeroDemon>(game->getHero())){
+    if (aa != nullptr){
 
         Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/demon.png"));
+        qDebug() << "Loading demon picture into hero";
 
     }
-    else if (instanceof<HeroHuman>(game->getHero())){
+    else if (bb != nullptr){
 
         Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/human.png"));
+        qDebug() << "Loading human picture into hero";
 
     }
-    else if (instanceof<HeroWerewolf>(game->getHero())){
+    else if (cc != nullptr){
 
         Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/wolf.png"));
+        qDebug() << "Loading wolf picture into hero";
 
     }
-    else if (instanceof<HeroWerewolf>(game->getHero())){
+    else if (dd != nullptr){
 
         Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/werewolf.png"));
+        qDebug() << "Loading werewolf picture into hero";
 
     }
-
-
 
 }
 
