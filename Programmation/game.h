@@ -20,8 +20,8 @@ class Game
 {
 public:
     Game();
-    Entity* createHero(std::string name,std::string class_type,std::string job);
-    std::list<Entity*> createEnemies(int number_enemies);
+    static Entity* createHero(std::string name,std::string class_type,std::string job);
+    static std::list<Entity*> createEnemies(int number_enemies);
 
 };
 
