@@ -305,7 +305,7 @@ private:
     void wolf_function();
     void version();
     void about_authors();
-    void play(QString type, QString name, QString job);
+    void play(std::string type, std::string name, std::string job);
     void exit();
     void reset();
     QString get_name();

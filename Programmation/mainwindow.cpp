@@ -2,6 +2,7 @@
 #include "game.h"
 #include <QDebug>
 #include <QThread>
+#include <cstdlib>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -24,7 +25,7 @@ void MainWindow::demon_function()
     qDebug() << "Name : " << name;
     QString job = get_job();
     qDebug() << "Job : " << job;
-    play("Demon", name, job);
+    play("Demon", name.toStdString(), job.toStdString());
 
 }
 
@@ -35,7 +36,7 @@ void MainWindow::human_function(){
     qDebug() << "Name : " << name;
     QString job = get_job();
     qDebug() << "Job : " << job;
-    play("Human", name, job);
+    play("Human", name.toStdString(), job.toStdString());
 
 }
 
@@ -46,7 +47,7 @@ void MainWindow::werewolf_function(){
     qDebug() << "Name : " << name;
     QString job = get_job();
     qDebug() << "Job : " << job;
-    play("Werewolf", name, job);
+    play("Werewolf", name.toStdString(), job.toStdString());
 }
 
 void MainWindow::wolf_function(){
@@ -56,12 +57,15 @@ void MainWindow::wolf_function(){
     qDebug() << "Name : " << name;
     QString job = get_job();
     qDebug() << "Job : " << job;
-    play("Wolf", name, job);
+    play("Wolf", name.toStdString(), job.toStdString());
 }
 
-void MainWindow::play(QString type, QString name, QString job){
+void MainWindow::play(std::string type, std::string name, std::string job){
 
-    Game *game = new Game();
+    Entity *hero;
+    std::list<Entity*> *ennemies;
+    srand((unsigned int)time(0));
+    int nb_ennemies = rand() % 30 + 1;
 
     setupUi_Loading(this);
     setFixedSize(1024, 768);
@@ -72,23 +76,25 @@ void MainWindow::play(QString type, QString name, QString job){
     setFixedSize(1024, 768);
     setWindowTitle("MePorg - Fight !");
 
+   hero = Game::createHero(name, type, job);
+   ennemies = Game::createEnemies(nb_ennemies);
 
-    if (type == "Demon"){
+    if (instanceof<HeroDemon>(game->getHero())){
 
         Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/demon.png"));
 
     }
-    else if (type == "Human"){
+    else if (instanceof<HeroHuman>(game->getHero())){
 
         Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/human.png"));
 
     }
-    else if (type == "Wolf"){
+    else if (instanceof<HeroWerewolf>(game->getHero())){
 
         Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/wolf.png"));
 
     }
-    else if (type == "Werewolf"){
+    else if (instanceof<HeroWerewolf>(game->getHero())){
 
         Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/werewolf.png"));
 
