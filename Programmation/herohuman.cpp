@@ -1,0 +1,9 @@
+#include "herohuman.h"
+
+HeroHuman::HeroHuman(std::string name,int life,int attack,int strength, int brain){
+    this->setName(name);
+    this->setLifePoint(life);
+    this->setAttackPoint(attack);
+    this->setStrengthPoint(strength);
+    this->setBrainPoint(brain);
+}
