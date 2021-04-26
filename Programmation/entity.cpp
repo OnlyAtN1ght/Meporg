@@ -47,6 +47,53 @@ void Entity::attack2(Entity entity_attacked){
     int entity_attacked_life = entity_attacked.getLifePoint();
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
 };
+void Entity::attack3(Entity entity_attacked){
+    // We need to keep track of items and job
+    int total_dommages = 0;
+    total_dommages += this->attack_point;
+
+
+    // We get the damages from items
+    std::list<Item>::iterator it = this->backpack.begin();
+    for (int i = 0;i < this->backpack.size();i++){
+        // it points the i-th element of this->backpack
+        total_dommages += it->getAttackPoint();
+
+        // We go to the next item
+        std::advance(it, 1);
+    }
+
+    // We get the damages from the job
+    total_dommages += this->job.getBonusAttackPoint();
+
+
+    int entity_attacked_life = entity_attacked.getLifePoint();
+    entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
+};
+void Entity::attack4(Entity entity_attacked){
+    // We need to keep track of items and job
+    int total_dommages = 0;
+    total_dommages += this->attack_point;
+
+
+    // We get the damages from items
+    std::list<Item>::iterator it = this->backpack.begin();
+    for (int i = 0;i < this->backpack.size();i++){
+        // it points the i-th element of this->backpack
+        total_dommages += it->getAttackPoint();
+
+        // We go to the next item
+        std::advance(it, 1);
+    }
+
+    // We get the damages from the job
+    total_dommages += this->job.getBonusAttackPoint();
+
+
+    int entity_attacked_life = entity_attacked.getLifePoint();
+    entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
+};
+
 
 //Getters/Setters
 std::string Entity::getName(){
@@ -178,9 +225,9 @@ void Entity::addItem(Item new_item){
     this->backpack.push_back(new_item);
 };
 
-//void addItems(std::list<Item> new_items){
-
-//};
+void Entity::addItems(std::list<Item> new_items){
+    this->backpack.insert(this->backpack.end(), new_items.begin(), new_items.end());
+};
 
 Job Entity::getJob(){
     return this->job;
@@ -191,5 +238,22 @@ void Entity::setJob(Job job){
 }
 
 bool Entity::isDead(){
-    return this->life_point <= 0;
+    return this->getLifePoint() <= 0;
 }
+
+
+std::string Entity::getNameAttack1(){
+   return this->name_attack_1;
+};
+
+std::string Entity::getNameAttack2(){
+   return this->name_attack_2;
+};
+
+std::string Entity::getNameAttack3(){
+   return this->name_attack_3;
+};
+
+std::string Entity::getNameAttack4(){
+   return this->name_attack_4;
+};

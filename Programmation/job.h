@@ -1,11 +1,17 @@
 #ifndef JOB_H
 #define JOB_H
 
+#include <string>
+#include <QDebug>
+
+#include <json/value.h>
+#include <fstream>
 
 class Job
 {
 public:
     Job();
+    Job(std::string name_job);
     Job(int bonus_brain_point,int bonus_strength_point,int bonus_attack_point,int bonus_life_point);
     int getBonusBrainPoint();
     void setBonusBrainPoint(int new_bonus_brain_point);

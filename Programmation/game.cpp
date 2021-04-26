@@ -24,7 +24,7 @@ Entity* Game::createHero(std::string name,std::string class_type,std::string job
     // We setup the job
     Job* hero_job;
     if (job == "Teacher"){
-        hero_job = new Job();
+        hero_job = new Job("Teacher");
 
     } else if (job == "Worker"){
         hero_job = new Job();

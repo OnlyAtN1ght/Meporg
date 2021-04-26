@@ -13,6 +13,9 @@ public:
     Entity();
     virtual void attack1(Entity entity_attacked);
     virtual void attack2(Entity entity_attacked);
+    virtual void attack3(Entity entity_attacked);
+    virtual void attack4(Entity entity_attacked);
+
 
     //Getters/Setters
     std::string getName();
@@ -37,13 +40,18 @@ public:
 
     std::list<Item> getItems();
     void addItem(Item new_item);
-    //void addItems(std::list<Item> new_items);
+    void addItems(std::list<Item> new_items);
 
     Job getJob();
     void setJob(Job job);
 
     // Function
     bool isDead();
+
+    std::string getNameAttack1();
+    std::string getNameAttack2();
+    std::string getNameAttack3();
+    std::string getNameAttack4();
 
 private:
     std::string name;
@@ -58,6 +66,8 @@ private:
 
     std::string name_attack_1;
     std::string name_attack_2;
+    std::string name_attack_3;
+    std::string name_attack_4;
 
 };
 
