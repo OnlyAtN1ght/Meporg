@@ -320,6 +320,10 @@ private:
     void reset();
     QString get_name();
     QString get_job();
+    void attack1();
+    void attack2();
+    void attack3();
+    void attack4();
 
 };
 
