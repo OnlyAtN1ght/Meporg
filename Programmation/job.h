@@ -4,7 +4,6 @@
 #include <string>
 #include <QDebug>
 
-#include <json/value.h>
 #include <fstream>
 
 class Job

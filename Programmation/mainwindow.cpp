@@ -4,6 +4,11 @@
 #include <QThread>
 #include <cstdlib>
 
+std::list<Entity*>::iterator it;
+int ennemies_size;
+Entity *hero;
+std::list<Entity*> ennemies;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -58,6 +63,7 @@ void MainWindow::wolf_function(){
     QString job = get_job();
     qDebug() << "Job : " << job;
     play("Wolf", name.toStdString(), job.toStdString());
+
 }
 
 void MainWindow::play(std::string type, std::string name, std::string job){
@@ -66,8 +72,6 @@ void MainWindow::play(std::string type, std::string name, std::string job){
     setFixedSize(1024, 768);
     setWindowTitle("MePorg - Loading...");
 
-    Entity *hero;
-    std::list<Entity*> ennemies;
     srand((unsigned int)time(0));
     int nb_ennemies = rand() % 30 + 1;
 
@@ -111,6 +115,75 @@ void MainWindow::play(std::string type, std::string name, std::string job){
         qDebug() << "Loading werewolf picture into hero";
 
     }
+
+
+    it = ennemies.begin();
+    ennemies_size = ennemies.size();
+
+    EnemyDemon *ee = dynamic_cast<EnemyDemon*>(*it);
+    EnemyHuman *ff = dynamic_cast<EnemyHuman*>(*it);
+    EnemyWolf *gg = dynamic_cast<EnemyWolf*>(*it);
+    EnemyWerewolf *hh = dynamic_cast<EnemyWerewolf*>(*it);
+
+    if (ee != nullptr){
+
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/demon.png"));
+        qDebug() << "Loading demon picture into Enemy";
+
+    }
+    else if (ff != nullptr){
+
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/human.png"));
+        qDebug() << "Loading human picture into Enemy";
+
+    }
+    else if (gg != nullptr){
+
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/wolf.png"));
+        qDebug() << "Loading wolf picture into Enemy";
+
+    }
+    else if (hh != nullptr){
+
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/werewolf.png"));
+        qDebug() << "Loading werewolf picture into Enemy";
+
+    }
+
+    Attack1->setText(QString::fromStdString(hero->getNameAttack1()));
+    Attack2->setText(QString::fromStdString(hero->getNameAttack2()));
+    Attack3->setText(QString::fromStdString(hero->getNameAttack3()));
+    Attack4->setText(QString::fromStdString(hero->getNameAttack4()));
+
+    connect(Attack1, &QPushButton::clicked, this, &MainWindow::attack1);
+    connect(Attack2, &QPushButton::clicked, this, &MainWindow::attack2);
+    connect(Attack3, &QPushButton::clicked, this, &MainWindow::attack3);
+    connect(Attack4, &QPushButton::clicked, this, &MainWindow::attack4);
+
+}
+
+void MainWindow::attack1(){
+
+    qDebug() << "Attack 1 pressed";
+
+}
+
+void MainWindow::attack2(){
+
+    qDebug() << "Attack 2 pressed";
+
+}
+
+void MainWindow::attack3(){
+
+    qDebug() << "Attack 3 pressed";
+
+}
+
+void MainWindow::attack4(){
+
+
+    qDebug() << "Attack 4 pressed";
 
 }
 
