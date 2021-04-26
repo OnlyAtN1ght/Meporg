@@ -93,12 +93,13 @@ void Entity::setAttackPoint(int new_attack_point){
 };
 
 int Entity::getLifePoint(){
-    int life;
+    int life = 0;
     life += this->life_point;
 
     // We get the life from items
     std::list<Item>::iterator it = this->backpack.begin();
-    for (int i = 0;i < this->backpack.size();i++){
+    int size = this->backpack.size();
+    for (int i = 0;i < size;i++){
         // it points the i-th element of this->backpack
         life += it->getLifePoint();
 
@@ -116,7 +117,26 @@ void Entity::setLifePoint(int new_life_point){
 };
 
 int Entity::getBrainPoint(){
-    return this->brain_point;
+    // We need to keep track of items and job
+    int total_brain = 0;
+    total_brain += this->brain_point;
+
+
+    // We get the brain_points from items
+    std::list<Item>::iterator it = this->backpack.begin();
+    int size = this->backpack.size();
+    for (int i = 0;i < size;i++){
+        // it points the i-th element of this->backpack
+        total_brain += it->getBrainPoint();
+
+        // We go to the next item
+        std::advance(it, 1);
+    }
+
+    // We get the damages from the job
+    total_brain += this->job.getBonusBrainPoint();
+
+    return total_brain;
 };
 
 void Entity::setBrainPoint(int new_brain_point){
@@ -124,7 +144,26 @@ void Entity::setBrainPoint(int new_brain_point){
 };
 
 int Entity::getStrengthPoint(){
-    return this->strength_point;
+    // We need to keep track of items and job
+    int total_brain = 0;
+    total_brain += this->strength_point;
+
+
+    // We get the strength points from items
+    std::list<Item>::iterator it = this->backpack.begin();
+    int size = this->backpack.size();
+    for (int i = 0;i < size;i++){
+        // it points the i-th element of this->backpack
+        total_brain += it->getStrengthPoint();
+
+        // We go to the next item
+        std::advance(it, 1);
+    }
+
+    // We get the damages from the job
+    total_brain += this->job.getBonusStrengthPoint();
+
+    return total_brain;
 };
 
 void Entity::setStrengthPoint(int new_strength_point){
