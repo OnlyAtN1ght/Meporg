@@ -2,6 +2,7 @@
 #define ENTITY_H
 
 #include <string>
+#include <vector>
 #include <list>
 #include "item.h"
 #include "job.h"
@@ -38,9 +39,9 @@ public:
     int getStrengthPoint();
     void setStrengthPoint(int new_strength_point);
 
-    std::list<Item> getItems();
+    std::vector<Item> getItems();
     void addItem(Item new_item);
-    void addItems(std::list<Item> new_items);
+    void addItems(std::vector<Item> new_items);
 
     Job getJob();
     void setJob(Job job);
@@ -61,7 +62,7 @@ private:
     int brain_point;
     int strength_point;
     bool sex;
-    std::list<Item> backpack;
+    std::vector<Item> backpack;
     Job job;
 
     std::string name_attack_1;

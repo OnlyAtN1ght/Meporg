@@ -3,9 +3,8 @@
 
 #include <string>
 #include <QDebug>
+#include<QFile>
 
-#include <json/value.h>
-#include <fstream>
 
 class Job
 {

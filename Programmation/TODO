@@ -1,3 +1,4 @@
 - Name enemies
 - Constructor enemies 
 - Default value attributes (Hero,Ennemy)
+- Created own list (mieux que std::list)

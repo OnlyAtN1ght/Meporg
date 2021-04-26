@@ -8,10 +8,7 @@ Entity::Entity(std::string name,int life,int attack,int strength, int brain){
     this->brain_point = brain;
 };
 
-Entity::Entity(){
-
-};
-
+Entity::Entity(){};
 
 void Entity::attack1(Entity entity_attacked){
     int total_dommages = this->getAttackPoint();
@@ -24,6 +21,7 @@ void Entity::attack1(Entity entity_attacked){
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
 
 };
+
 void Entity::attack2(Entity entity_attacked){
     // We need to keep track of items and job
     int total_dommages = 0;
@@ -31,8 +29,9 @@ void Entity::attack2(Entity entity_attacked){
 
 
     // We get the damages from items
-    std::list<Item>::iterator it = this->backpack.begin();
-    for (int i = 0;i < this->backpack.size();i++){
+    std::vector<Item>::iterator it = this->backpack.begin();
+    int size  = this->backpack.size();
+    for (int i = 0;i < size;i++){
         // it points the i-th element of this->backpack
         total_dommages += it->getAttackPoint();
 
@@ -47,6 +46,7 @@ void Entity::attack2(Entity entity_attacked){
     int entity_attacked_life = entity_attacked.getLifePoint();
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
 };
+
 void Entity::attack3(Entity entity_attacked){
     // We need to keep track of items and job
     int total_dommages = 0;
@@ -54,8 +54,9 @@ void Entity::attack3(Entity entity_attacked){
 
 
     // We get the damages from items
-    std::list<Item>::iterator it = this->backpack.begin();
-    for (int i = 0;i < this->backpack.size();i++){
+    std::vector<Item>::iterator it = this->backpack.begin();
+    int size  = this->backpack.size();
+    for (int i = 0;i < size;i++){
         // it points the i-th element of this->backpack
         total_dommages += it->getAttackPoint();
 
@@ -70,6 +71,7 @@ void Entity::attack3(Entity entity_attacked){
     int entity_attacked_life = entity_attacked.getLifePoint();
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
 };
+
 void Entity::attack4(Entity entity_attacked){
     // We need to keep track of items and job
     int total_dommages = 0;
@@ -77,8 +79,9 @@ void Entity::attack4(Entity entity_attacked){
 
 
     // We get the damages from items
-    std::list<Item>::iterator it = this->backpack.begin();
-    for (int i = 0;i < this->backpack.size();i++){
+    std::vector<Item>::iterator it = this->backpack.begin();
+    int size = this->backpack.size();
+    for (int i = 0;i < size;i++){
         // it points the i-th element of this->backpack
         total_dommages += it->getAttackPoint();
 
@@ -119,7 +122,7 @@ int Entity::getAttackPoint(){
 
 
     // We get the damages from items
-    std::list<Item>::iterator it = this->backpack.begin();
+    std::vector<Item>::iterator it = this->backpack.begin();
     int size = this->backpack.size();
     for (int i = 0;i < size;i++){
         // it points the i-th element of this->backpack
@@ -144,7 +147,7 @@ int Entity::getLifePoint(){
     life += this->life_point;
 
     // We get the life from items
-    std::list<Item>::iterator it = this->backpack.begin();
+    std::vector<Item>::iterator it = this->backpack.begin();
     int size = this->backpack.size();
     for (int i = 0;i < size;i++){
         // it points the i-th element of this->backpack
@@ -170,7 +173,7 @@ int Entity::getBrainPoint(){
 
 
     // We get the brain_points from items
-    std::list<Item>::iterator it = this->backpack.begin();
+    std::vector<Item>::iterator it = this->backpack.begin();
     int size = this->backpack.size();
     for (int i = 0;i < size;i++){
         // it points the i-th element of this->backpack
@@ -197,7 +200,7 @@ int Entity::getStrengthPoint(){
 
 
     // We get the strength points from items
-    std::list<Item>::iterator it = this->backpack.begin();
+    std::vector<Item>::iterator it = this->backpack.begin();
     int size = this->backpack.size();
     for (int i = 0;i < size;i++){
         // it points the i-th element of this->backpack
@@ -217,7 +220,7 @@ void Entity::setStrengthPoint(int new_strength_point){
     this->strength_point = new_strength_point;
 };
 
-std::list<Item> Entity::getItems(){
+std::vector<Item> Entity::getItems(){
     return this->backpack;
 };
 
@@ -225,7 +228,7 @@ void Entity::addItem(Item new_item){
     this->backpack.push_back(new_item);
 };
 
-void Entity::addItems(std::list<Item> new_items){
+void Entity::addItems(std::vector<Item> new_items){
     this->backpack.insert(this->backpack.end(), new_items.begin(), new_items.end());
 };
 
