@@ -11,6 +11,8 @@ Entity::Entity(std::string name,int life,int attack,int strength, int brain){
 Entity::Entity(){};
 
 void Entity::attack1(Entity entity_attacked){
+    qDebug() << "Début attack 1";
+
     int total_dommages = this->getAttackPoint();
 
     // We use the strength to increase the damages

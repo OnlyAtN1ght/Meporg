@@ -4,36 +4,47 @@
 Job::Job(){}
 
 Job::Job(std::string name_job){
-    qDebug() << "JOB CREATEAUDIJOADKZ";
-    QFile file("data.json");
+    qDebug() << qApp->applicationDirPath();
+    QString path = qApp->applicationDirPath() + "/ressources/data.json";
 
-   // test if open
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)){
-            qDebug() << "FIle not opened OPENED";
-            return;}
+    QByteArray data;
 
+    QFile inFile(path);
+    if (!inFile.open(QIODevice::ReadOnly|QIODevice::Text)){
+        qDebug() << "Error reading the file";
+    } else {
+        qDebug() << "Fichier bien ouvert";
+        data = inFile.readAll();
+        qDebug() << data;
+        inFile.close();
+    }
 
-    //qDebug() << val;
-    //QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
+    QJsonParseError errorPtr;
+        QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+        if (doc.isNull()) {
+            qDebug() << "Parse failed";
+        } else {
+            qDebug() << "Parse not failed";
+        }
 
 
     if (name_job == "Teacher"){
-        this->bonus_attack_point = 5;
-        this->bonus_brain_point = 10;
-        this->bonus_strength_point = 2;
-        this->bonus_life_point = 5;
+        this->bonus_attack_point = doc["job"]["Teacher"]["bonus_attack_point"].toInt();
+        this->bonus_brain_point = doc["job"]["Teacher"]["bonus_brain_point"].toInt();
+        this->bonus_strength_point = doc["job"]["Teacher"]["bonus_strength_point"].toInt();
+        this->bonus_life_point = doc["job"]["Teacher"]["bonus_life_point"].toInt();
 
     } else if (name_job == "Worker"){
-        this->bonus_attack_point = 5;
-        this->bonus_brain_point = 2;
-        this->bonus_strength_point = 2;
-        this->bonus_life_point = 5;
+        this->bonus_attack_point = doc["job"]["Worker"]["bonus_attack_point"].toInt();
+        this->bonus_brain_point = doc["job"]["Worker"]["bonus_brain_point"].toInt();
+        this->bonus_strength_point = doc["job"]["Worker"]["bonus_strength_point"].toInt();
+        this->bonus_life_point = doc["job"]["Worker"]["bonus_life_point"].toInt();
 
     } else if (name_job == "Healer"){
-        this->bonus_attack_point = 5;
-        this->bonus_brain_point = 20;
-        this->bonus_strength_point = 2;
-        this->bonus_life_point = 5;
+        this->bonus_attack_point = doc["job"]["Healer"]["bonus_attack_point"].toInt();
+        this->bonus_brain_point = doc["job"]["Healer"]["bonus_brain_point"].toInt();
+        this->bonus_strength_point = doc["job"]["Healer"]["bonus_strength_point"].toInt();
+        this->bonus_life_point = doc["job"]["Healer"]["bonus_life_point"].toInt();
     } else {
 
     }
