@@ -52,10 +52,12 @@ public:
     // Function
     bool isDead();
 
-    std::string getNameAttack1();
-    std::string getNameAttack2();
-    std::string getNameAttack3();
-    std::string getNameAttack4();
+    QString getNameAttack1();
+    QString getNameAttack2();
+    QString getNameAttack3();
+    QString getNameAttack4();
+
+    QString enemyAttack(Entity enemy_attacked);
 
 private:
     std::string name;
@@ -68,10 +70,10 @@ private:
     std::vector<Item> backpack;
     Job job;
 
-    std::string name_attack_1;
-    std::string name_attack_2;
-    std::string name_attack_3;
-    std::string name_attack_4;
+    QString name_attack_1;
+    QString name_attack_2;
+    QString name_attack_3;
+    QString name_attack_4;
 
     QString type;
 

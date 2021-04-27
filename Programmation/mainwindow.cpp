@@ -118,10 +118,10 @@ void MainWindow::play(std::string type, std::string name, std::string job){
 
     get_next_ennemy();
 
-    Attack1->setText(QString::fromStdString(hero->getNameAttack1()));
-    Attack2->setText(QString::fromStdString(hero->getNameAttack2()));
-    Attack3->setText(QString::fromStdString(hero->getNameAttack3()));
-    Attack4->setText(QString::fromStdString(hero->getNameAttack4()));
+    Attack1->setText(hero->getNameAttack1());
+    Attack2->setText(hero->getNameAttack2());
+    Attack3->setText(hero->getNameAttack3());
+    Attack4->setText(hero->getNameAttack4());
 
     Enemy_life->setText(QString::number(actual_ennemy->getLifePoint()));
     Hero_life->setText(QString::number(hero->getLifePoint()));

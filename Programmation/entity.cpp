@@ -253,18 +253,44 @@ QString Entity::getType(){
 }
 
 
-std::string Entity::getNameAttack1(){
+QString Entity::getNameAttack1(){
    return this->name_attack_1;
 };
 
-std::string Entity::getNameAttack2(){
+QString Entity::getNameAttack2(){
    return this->name_attack_2;
 };
 
-std::string Entity::getNameAttack3(){
+QString Entity::getNameAttack3(){
    return this->name_attack_3;
 };
 
-std::string Entity::getNameAttack4(){
+QString Entity::getNameAttack4(){
    return this->name_attack_4;
 };
+
+
+QString Entity::enemyAttack(Entity enemy_attacked){
+    int attack = std::rand() % 4;
+
+    if (attack == 1){
+        this->attack1(enemy_attacked);
+        return this->getNameAttack1();
+
+    } else if (attack == 2){
+        this->attack2(enemy_attacked);
+        return this->getNameAttack2();
+
+    } else if (attack == 3){
+        this->attack3(enemy_attacked);
+        return this->getNameAttack3();
+
+    } else if (attack == 4){
+        this->attack4(enemy_attacked);
+        return this->getNameAttack4();
+
+    } else {
+
+    }
+};
+
