@@ -241,6 +241,11 @@ public:
 
            centralwidget = new QWidget(MainWindow);
            centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+           QLabel *background = new QLabel(centralwidget);
+           background->setObjectName("label_2");
+           background->setGeometry(QRect(0, 0, 1024, 768));
+           background->setMouseTracking(false);
+           background->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/fight/fight_background.png"));
            Attack1 = new QPushButton(centralwidget);
            Attack1->setObjectName(QString::fromUtf8("Attack1"));
            Attack1->setGeometry(QRect(700, 610, 151, 61));
@@ -282,6 +287,10 @@ public:
            Hero_life_label->setText("Your life remaining :");
            Hero_life_label->setObjectName("hero_label");
            Hero_life_label->setGeometry(QRect(20, 560, 350, 16));
+           Hero_life_label->setStyleSheet("QLabel { color : white; font : bold; }");
+           Enemy_life_label->setStyleSheet("QLabel { color : white; font : bold;}");
+           Enemy_life->setStyleSheet("QProgressBar{ border-radius: 5px; text-align : center;} QProgressBar::chunk {background-color: red; width: 20px;}");
+           Hero_life->setStyleSheet("QProgressBar{ border-radius: 5px; text-align : center;} QProgressBar::chunk {background-color: red; width: 20px;}");
            MainWindow->setCentralWidget(centralwidget);
 
            retranslateUi_Fight(MainWindow);
