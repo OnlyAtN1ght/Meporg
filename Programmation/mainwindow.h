@@ -77,7 +77,7 @@ public:
         QFont font1(family);
         QFont font2(family);
 
-        musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/start_sound.wav"));
+        musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/accueil/start_sound.wav"));
         musique->setVolume(10);
         musique->play();
 
@@ -98,7 +98,7 @@ public:
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(0, 0, 1024, 768));
         label_2->setMouseTracking(false);
-        label_2->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/main_background.png"));
+        label_2->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/accueil/main_background.png"));
         WelcomeLabel = new QLabel(centralwidget);
         WelcomeLabel->setObjectName("WelcomeLabel");
         WelcomeLabel->setGeometry(QRect(30, 10, 821, 201));
@@ -130,25 +130,25 @@ public:
         human = new QLabel(centralwidget);
         human->setObjectName("human_picture");
         human->setGeometry(QRect(0, 0, 100, 101));
-        human->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/human.png"));
+        human->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/accueil/human.png"));
         horizontalLayoutPicture->addWidget(human);
 
         werewolf = new QLabel(centralwidget);
         werewolf->setObjectName("werewolf_picture");
         werewolf->setGeometry(QRect(0, 0, 100, 163));
-        werewolf->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/werewolf.png"));
+        werewolf->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/accueil/werewolf.png"));
         horizontalLayoutPicture->addWidget(werewolf);
 
         wolf = new QLabel(centralwidget);
         wolf->setObjectName("wolf_picture");
         wolf->setGeometry(QRect(0, 0, 98, 81));
-        wolf->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/wolf.png"));
+        wolf->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/accueil/wolf.png"));
         horizontalLayoutPicture->addWidget(wolf);
 
         demon = new QLabel(centralwidget);
         demon->setObjectName("demon_picture");
         demon->setGeometry(QRect(0, 0, 100, 117));
-        demon->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/demon.png"));
+        demon->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/accueil/demon.png"));
         horizontalLayoutPicture->addWidget(demon);
 
         button_human = new QPushButton(horizontalLayoutButtonWidget);
@@ -233,7 +233,7 @@ public:
            if (MainWindow->objectName().isEmpty())
                MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
 
-           musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/main_sound.wav"));
+           musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/fight/main_sound.wav"));
            musique->play();
 
            centralwidget = new QWidget(MainWindow);
@@ -261,7 +261,7 @@ public:
            Information->setGeometry(QRect(10, 615, 631, 122));
            Enemy = new QLabel(centralwidget);
            Enemy->setObjectName(QString::fromUtf8("Enemy"));
-           Enemy->setGeometry(QRect(700, 20, 350, 350));
+           Enemy->setGeometry(QRect(680, 20, 350, 350));
            Hero = new QLabel(centralwidget);
            Hero->setObjectName(QString::fromUtf8("Hero"));
            Hero->setGeometry(QRect(20, 230, 350, 350));

@@ -93,25 +93,25 @@ void MainWindow::play(std::string type, std::string name, std::string job){
 
     if (aa != nullptr){
 
-        Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/demon.png"));
+        Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/fight/demon.png"));
         qDebug() << "Loading demon picture into hero";
 
     }
     else if (bb != nullptr){
 
-        Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/human.png"));
+        Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/fight/human.png"));
         qDebug() << "Loading human picture into hero";
 
     }
     else if (cc != nullptr){
 
-        Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/wolf.png"));
+        Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/fight/wolf.png"));
         qDebug() << "Loading wolf picture into hero";
 
     }
     else if (dd != nullptr){
 
-        Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/werewolf.png"));
+        Hero->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/fight/werewolf.png"));
         qDebug() << "Loading werewolf picture into hero";
 
     }
@@ -123,10 +123,15 @@ void MainWindow::play(std::string type, std::string name, std::string job){
     Attack3->setText(QString::fromStdString(hero->getNameAttack3()));
     Attack4->setText(QString::fromStdString(hero->getNameAttack4()));
 
+    Enemy_life->setText(QString::number(actual_ennemy->getLifePoint()));
+    Hero_life->setText(QString::number(hero->getLifePoint()));
+
     connect(Attack1, &QPushButton::clicked, this, &MainWindow::attack1);
     connect(Attack2, &QPushButton::clicked, this, &MainWindow::attack2);
     connect(Attack3, &QPushButton::clicked, this, &MainWindow::attack3);
     connect(Attack4, &QPushButton::clicked, this, &MainWindow::attack4);
+
+    Information->setText("A " + QString::fromStdString(actual_ennemy->getName()) + " has spawn ! What do you want to do ?");
 
 }
 
@@ -135,31 +140,31 @@ void MainWindow::get_next_ennemy(){
     qDebug() << "Getting next ennemy";
     actual_ennemy_position += 1;
     actual_ennemy = ennemies.at(actual_ennemy_position);
-    qDebug() << actual_ennemy;
+
     qDebug() << "Checking ennemy type";
 
-    if (instanceof<EnemyDemon>(actual_ennemy)){
+    if (actual_ennemy->getType() == "Demon"){
 
-        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/demon.png"));
         qDebug() << "Loading demon picture into Enemy";
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/fight/demon.png"));
 
     }
-    else if (instanceof<EnemyHuman>(actual_ennemy)){
+    else if (actual_ennemy->getType() == "Human"){
 
-        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/human.png"));
         qDebug() << "Loading human picture into Enemy";
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/fight/human.png"));
 
     }
-    else if (instanceof<EnemyHuman>(actual_ennemy)){
+    else if (actual_ennemy->getType() == "Wolf"){
 
-        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/wolf.png"));
         qDebug() << "Loading wolf picture into Enemy";
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/fight/wolf.png"));
 
     }
-    else if (instanceof<EnemyHuman>(actual_ennemy)){
+    else if (actual_ennemy->getType() == "Werewolf"){
 
-        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/werewolf.png"));
         qDebug() << "Loading werewolf picture into Enemy";
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/fight/werewolf.png"));
 
     }
 
@@ -168,18 +173,21 @@ void MainWindow::get_next_ennemy(){
 void MainWindow::attack1(){
 
     qDebug() << "Attack 1 pressed";
+    Information->append("You choose " + Attack1->text());
 
 }
 
 void MainWindow::attack2(){
 
     qDebug() << "Attack 2 pressed";
+    Information->append("You choose " + Attack2->text());
 
 }
 
 void MainWindow::attack3(){
 
     qDebug() << "Attack 3 pressed";
+    Information->append("You choose " + Attack3->text());
 
 }
 
@@ -187,6 +195,7 @@ void MainWindow::attack4(){
 
 
     qDebug() << "Attack 4 pressed";
+    Information->append("You choose " + Attack4->text());
 
 }
 

@@ -38,11 +38,11 @@ public:
         Lilian = new QLabel(Dialog);
         Lilian->setObjectName("Lilian");
         Lilian->setGeometry(QRect(0, -10, 91, 151));
-        Lilian->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/Lilian.jpg"));
+        Lilian->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/about/Lilian.jpg"));
         Simon = new QLabel(Dialog);
         Simon->setObjectName("Simon");
         Simon->setGeometry(QRect(0, 160, 91, 81));
-        Simon->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/Simon.jpg"));
+        Simon->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/about/Simon.jpg"));
         label = new QLabel(Dialog);
         label->setObjectName("label");
         label->setGeometry(QRect(170, 10, 141, 81));
