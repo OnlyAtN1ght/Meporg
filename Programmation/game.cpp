@@ -24,20 +24,21 @@ Entity* Game::createHero(std::string name,std::string class_type,std::string job
     // We setup the job
     Job* hero_job;
     if (job == "Teacher"){
-        hero_job = new Job("Teacher");
+        Job* test_job = new Job("Teacher");
+        h->setJob(*test_job);
 
     } else if (job == "Worker"){
-        hero_job = new Job();
+        Job* test_job = new Job("Worker");
+        h->setJob(*test_job);
 
     } else if (job == "Healer"){
-        hero_job = new Job();
+        Job* test_job = new Job("Healer");
+        h->setJob(*test_job);
 
     } else {
         hero_job = NULL;
         qDebug() << "Error dans l'argument de Game.createHero()";
     }
-
-    h->setJob(*hero_job);
 
     return h;
 
@@ -45,7 +46,6 @@ Entity* Game::createHero(std::string name,std::string class_type,std::string job
 
 std::vector<Entity*> Game::createEnemies(int number_enemies){
     std::vector<Entity*> enemies;
-    Entity* enemy;
 
     for (int i = 0; i < number_enemies; i++){
         int class_enemy = std::rand() % 4;
@@ -72,5 +72,7 @@ std::vector<Entity*> Game::createEnemies(int number_enemies){
     return enemies;
 
 };
+
+
 
 

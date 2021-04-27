@@ -4,29 +4,11 @@
 Job::Job(){}
 
 Job::Job(std::string name_job){
-    qDebug() << qApp->applicationDirPath();
-    QString path = qApp->applicationDirPath() + "/ressources/data.json";
+    qDebug() << "[CPP] : Creating Job with argument : ";
 
-    QByteArray data;
 
-    QFile inFile(path);
-    if (!inFile.open(QIODevice::ReadOnly|QIODevice::Text)){
-        qDebug() << "Error reading the file";
-    } else {
-        qDebug() << "Fichier bien ouvert";
-        data = inFile.readAll();
-        qDebug() << data;
-        inFile.close();
-    }
-
-    QJsonParseError errorPtr;
-        QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
-        if (doc.isNull()) {
-            qDebug() << "Parse failed";
-        } else {
-            qDebug() << "Parse not failed";
-        }
-
+    QJsonDocument doc = Reader::readDataJson();
+    qDebug() << doc["job"]["Teacher"]["bonus_attack_point"].toInt();
 
     if (name_job == "Teacher"){
         this->bonus_attack_point = doc["job"]["Teacher"]["bonus_attack_point"].toInt();

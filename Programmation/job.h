@@ -1,11 +1,15 @@
 #ifndef JOB_H
 #define JOB_H
 
+#include "reader.h"
+
 #include <string>
 #include <QDebug>
 #include <QFile>
 #include <QApplication>
 #include <QJsonDocument>
+
+
 
 
 class Job{

@@ -7,6 +7,8 @@
 #include <qDebug>
 
 #include "entity.h"
+
+
 #include "herodemon.h"
 #include "herohuman.h"
 #include "herowolf.h"
@@ -23,6 +25,8 @@ public:
     Game();
     static Entity* createHero(std::string name,std::string class_type,std::string job);
     static std::vector<Entity*> createEnemies(int number_enemies);
+
+    static QJsonDocument readDataJson();
 
 };
 

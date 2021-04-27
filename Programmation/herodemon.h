@@ -3,6 +3,8 @@
 
 #include "demon.h"
 
+#include <qDebug>
+
 class HeroDemon:public Demon{
 public:
     HeroDemon(std::string name,int life,int attack,int strength, int brain);

@@ -29,6 +29,7 @@ SOURCES += \
     level.cpp \
     main.cpp \
     mainwindow.cpp \
+    reader.cpp \
     werewolf.cpp \
     wolf.cpp
 
@@ -50,6 +51,7 @@ HEADERS += \
     item.h \
     level.h \
     mainwindow.h \
+    reader.h \
     werewolf.h \
     wolf.h
 

@@ -1,0 +1,25 @@
+{
+	"job" : {
+		"Teacher" : {
+			"bonus_attack_point" : 100,
+			"bonus_life_point" : 10,
+			"bonus_brain_point" : 10,
+			"bonus_strength_point" : 10}, 
+		"Worker" : {
+			"bonus_attack_point" : 10,
+			"bonus_life_point" : 30,
+			"bonus_brain_point" : 10,
+			"bonus_strength_point" : 10},
+		"Healer" : {
+			"bonus_attack_point" : 10,
+			"bonus_life_point" : 10,
+			"bonus_brain_point" : 10,
+			"bonus_strength_point" : 10}
+	},
+	"DEFAULT" : {
+		"default_life" : 10,
+		"default_attack" : 10,
+		"default_strength" : 10,
+		"default_brain" : 10
+	}
+}
