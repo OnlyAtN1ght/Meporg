@@ -118,10 +118,10 @@ void MainWindow::play(std::string type, std::string name, std::string job){
 
     get_next_ennemy();
 
-    Attack1->setText(QString::fromStdString(hero->getNameAttack1()));
-    Attack2->setText(QString::fromStdString(hero->getNameAttack2()));
-    Attack3->setText(QString::fromStdString(hero->getNameAttack3()));
-    Attack4->setText(QString::fromStdString(hero->getNameAttack4()));
+    Attack1->setText(hero->getNameAttack1());
+    Attack2->setText(hero->getNameAttack2());
+    Attack3->setText(hero->getNameAttack3());
+    Attack4->setText(hero->getNameAttack4());
 
     Enemy_life->setText(QString::number(actual_ennemy->getLifePoint()));
     Hero_life->setText(QString::number(hero->getLifePoint()));
@@ -130,8 +130,6 @@ void MainWindow::play(std::string type, std::string name, std::string job){
     connect(Attack2, &QPushButton::clicked, this, &MainWindow::attack2);
     connect(Attack3, &QPushButton::clicked, this, &MainWindow::attack3);
     connect(Attack4, &QPushButton::clicked, this, &MainWindow::attack4);
-
-    Information->setText("A " + QString::fromStdString(actual_ennemy->getName()) + " has spawn ! What do you want to do ?");
 
 }
 
@@ -168,12 +166,43 @@ void MainWindow::get_next_ennemy(){
 
     }
 
+    Information->setText("A " + QString::fromStdString(actual_ennemy->getName()) + " has spawn ! What do you want to do ?");
+
 }
 
 void MainWindow::attack1(){
 
     qDebug() << "Attack 1 pressed";
     Information->append("You choose " + Attack1->text());
+    hero->attack1(*actual_ennemy);
+    Enemy_life->setText(QString::number(actual_ennemy->getLifePoint()));
+
+    if (actual_ennemy->isDead()){
+
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " has defited !");
+        try{
+
+            get_next_ennemy();
+
+        }
+        catch(double e){
+
+            setupUi_Win(this) ;
+            setFixedSize(1024, 768);
+            setWindowTitle("MePorg");
+
+        }
+
+
+    }
+    else{
+
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->attack(*hero));
+        Hero_life->setText(QString::number(hero->getLifePoint()));
+
+    }
+
+
 
 }
 
