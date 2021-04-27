@@ -78,7 +78,7 @@ public:
         QFont font2(family);
 
         musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/start_sound.wav"));
-        musique->setVolume(100);
+        musique->setVolume(10);
         musique->play();
 
 
@@ -306,6 +306,7 @@ public:
         QMetaObject::connectSlotsByName(MainWindow);
     }
 
+
 private:
 
     Ui::MainWindow *ui;
@@ -324,6 +325,7 @@ private:
     void attack2();
     void attack3();
     void attack4();
+    void get_next_ennemy();
 
 };
 
