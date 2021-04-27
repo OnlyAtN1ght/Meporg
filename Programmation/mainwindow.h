@@ -78,7 +78,7 @@ public:
         QFont font2(family);
 
         musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/accueil/start_sound.wav"));
-        musique->setVolume(10);
+        musique->setVolume(20);
         musique->play();
 
 
@@ -291,32 +291,6 @@ public:
         Hero_life->setText(QCoreApplication::translate("MainWindow", "Bare de bie", nullptr));
     } // retranslateUi for Fight
 
-    void setupUi_Loading(QMainWindow *MainWindow){
-
-        if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        centralwidget = new QWidget(MainWindow);
-        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        label = new QLabel(centralwidget);
-        label->setObjectName("label");
-        label->setGeometry(QRect(0, 0, MainWindow->width(), MainWindow->height()));
-        label->setStyleSheet("QLabel{ background-color : black; color : white; }");
-        label->setText(QString("Loading..."));
-        MainWindow->setCentralWidget(centralwidget);
-        QMetaObject::connectSlotsByName(MainWindow);
-    }
-
-    void setupUi_Win(QMainWindow *MainWindow){
-
-        empty_gui();
-
-    }
-
-    void setupUi_Defeat(QMainWindow *MainWindow){
-
-
-
-    }
 
 private:
 
@@ -337,20 +311,8 @@ private:
     void attack3();
     void attack4();
     void get_next_ennemy();
-    void empty_gui(){
-
-        delete Attack1;
-        delete Attack2;
-        delete Attack3;
-        delete Attack4;
-        delete Information;
-        delete Enemy;
-        delete Enemy_life;
-        delete Hero;
-        delete Hero_life;
-
-
-    }
+    void defeat();
+    void victory();
 
 };
 
