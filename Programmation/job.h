@@ -4,11 +4,11 @@
 #include <string>
 #include <QDebug>
 #include <QFile>
+#include <QApplication>
 #include <QJsonDocument>
 
 
-class Job
-{
+class Job{
 public:
     Job();
     Job(std::string name_job);
