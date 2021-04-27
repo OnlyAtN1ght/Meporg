@@ -50,7 +50,7 @@ std::vector<Entity*> Game::createEnemies(int number_enemies){
     for (int i = 0; i < number_enemies; i++){
         int class_enemy = std::rand() % 4;
         if (class_enemy == 1){
-            Entity* enemy = new EnemyDemon("Demon");
+            Entity* enemy = new EnemyDemon(QString("Demon"));
 
         } else if (class_enemy == 2) {
             Entity* enemy = new EnemyHuman("Human");
