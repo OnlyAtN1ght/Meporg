@@ -51,19 +51,22 @@ std::vector<Entity*> Game::createEnemies(int number_enemies){
         int class_enemy = std::rand() % 4;
         if (class_enemy == 1){
             Entity* enemy = new EnemyDemon(QString("Demon"));
+            enemies.push_back(enemy);
 
         } else if (class_enemy == 2) {
-            Entity* enemy = new EnemyHuman("Human");
+            Entity* enemy = new EnemyHuman(QString("Human"));
+            enemies.push_back(enemy);
 
         } else if (class_enemy == 3) {
-            Entity* enemy = new EnemyWolf("Wolf");
+            Entity* enemy = new EnemyWolf(QString("Wolf"));
+            enemies.push_back(enemy);
 
         } else if (class_enemy == 4) {
-            Entity* enemy = new EnemyWerewolf("Werewolf");
+            Entity* enemy = new EnemyWerewolf(QString("Werewolf"));
+            enemies.push_back(enemy);
 
         }
 
-        enemies.push_back(enemy);
     }
 
     return enemies;
