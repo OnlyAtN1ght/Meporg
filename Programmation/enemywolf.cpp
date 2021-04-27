@@ -5,6 +5,6 @@ EnemyWolf::EnemyWolf()
 
 }
 
-QString Wolf::getType(){
+QString EnemyWolf::getType(){
     return "Wolf";
 }
