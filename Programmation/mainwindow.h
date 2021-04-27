@@ -19,6 +19,7 @@
 #include <QFontDatabase>
 #include <QInputDialog>
 #include <QMediaPlayer>
+#include <QProgressBar>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -61,8 +62,10 @@ public:
     QTextBrowser *Information;
     QLabel *Enemy;
     QLabel *Hero;
-    QLabel *Enemy_life;
-    QLabel *Hero_life;
+    QProgressBar *Enemy_life;
+    QProgressBar *Hero_life;
+    QLabel *Enemy_life_label;
+    QLabel *Hero_life_label;
 
     QMediaPlayer *musique = new QMediaPlayer;
 
@@ -265,12 +268,20 @@ public:
            Hero = new QLabel(centralwidget);
            Hero->setObjectName(QString::fromUtf8("Hero"));
            Hero->setGeometry(QRect(20, 230, 350, 350));
-           Enemy_life = new QLabel(centralwidget);
+           Enemy_life = new QProgressBar(centralwidget);
            Enemy_life->setObjectName(QString::fromUtf8("Enemy_life"));
-           Enemy_life->setGeometry(QRect(690, 370, 350, 16));
-           Hero_life = new QLabel(centralwidget);
+           Enemy_life->setGeometry(QRect(690, 370, 330, 16));
+           Enemy_life_label = new QLabel(centralwidget);
+           Enemy_life_label->setText("Enemy's life remaining :");
+           Enemy_life_label->setObjectName("enemy_label");
+           Enemy_life_label->setGeometry(QRect(690, 350, 350, 16));
+           Hero_life = new QProgressBar(centralwidget);
            Hero_life->setObjectName(QString::fromUtf8("Hero_life"));
            Hero_life->setGeometry(QRect(20, 580, 350, 16));
+           Hero_life_label = new QLabel(centralwidget);
+           Hero_life_label->setText("Your life remaining :");
+           Hero_life_label->setObjectName("hero_label");
+           Hero_life_label->setGeometry(QRect(20, 560, 350, 16));
            MainWindow->setCentralWidget(centralwidget);
 
            retranslateUi_Fight(MainWindow);
@@ -287,8 +298,7 @@ public:
         Attack4->setText(QCoreApplication::translate("MainWindow", "Attack 4", nullptr));
         Enemy->setText(QCoreApplication::translate("MainWindow", "Image de l'enemie", nullptr));
         Hero->setText(QCoreApplication::translate("MainWindow", "Image du h\303\251ro", nullptr));
-        Enemy_life->setText(QCoreApplication::translate("MainWindow", "Bare de vie", nullptr));
-        Hero_life->setText(QCoreApplication::translate("MainWindow", "Bare de bie", nullptr));
+
     } // retranslateUi for Fight
 
 

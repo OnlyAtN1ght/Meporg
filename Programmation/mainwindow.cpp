@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "game.h"
 #include <QDebug>
-#include <QThread>
-#include <cstdlib>
 
 Entity *hero;
 std::vector<Entity*> ennemies;
@@ -119,13 +117,18 @@ void MainWindow::play(std::string type, std::string name, std::string job){
     Attack3->setText(hero->getNameAttack3());
     Attack4->setText(hero->getNameAttack4());
 
-    Enemy_life->setText(QString::number(actual_ennemy->getLifePoint()));
-    Hero_life->setText(QString::number(hero->getLifePoint()));
-
     connect(Attack1, &QPushButton::clicked, this, &MainWindow::attack1);
     connect(Attack2, &QPushButton::clicked, this, &MainWindow::attack2);
     connect(Attack3, &QPushButton::clicked, this, &MainWindow::attack3);
     connect(Attack4, &QPushButton::clicked, this, &MainWindow::attack4);
+
+    Hero_life->setMaximum(hero->getLifePoint());
+    Enemy_life->setMaximum(actual_ennemy->getLifePoint());
+    Hero_life->setTextVisible(true);
+    Enemy_life->setTextVisible(true);
+    Hero_life->setValue(hero->getLifePoint());
+    Enemy_life->setValue(actual_ennemy->getLifePoint());
+
 
 }
 
@@ -174,7 +177,6 @@ void MainWindow::attack1(){
     hero->attack1(*actual_ennemy);
 
     qDebug() << "Ennemy life points after attack: " << actual_ennemy->getLifePoint();
-    Enemy_life->setText(QString::number(actual_ennemy->getLifePoint()));
 
     if (actual_ennemy->isDead()){
 
@@ -196,7 +198,6 @@ void MainWindow::attack1(){
     else{
 
         Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->enemyAttack(*hero));
-        Hero_life->setText(QString::number(hero->getLifePoint()));
 
         if (hero->isDead()){
 
@@ -211,7 +212,39 @@ void MainWindow::attack2(){
 
     qDebug() << "Attack 2 pressed";
     Information->append("You choose " + Attack2->text());
-    victory();
+    qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
+    hero->attack2(*actual_ennemy);
+
+    qDebug() << "Ennemy life points after attack: " << actual_ennemy->getLifePoint();
+
+    if (actual_ennemy->isDead()){
+
+        qDebug() << "Ennemy is dead";
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " has defited !");
+        try{
+
+            get_next_ennemy();
+
+        }
+        catch(double e){
+
+            victory();
+
+        }
+
+
+    }
+    else{
+
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->enemyAttack(*hero));
+
+        if (hero->isDead()){
+
+            defeat();
+
+        }
+
+    }
 
 }
 
@@ -219,7 +252,40 @@ void MainWindow::attack3(){
 
     qDebug() << "Attack 3 pressed";
     Information->append("You choose " + Attack3->text());
-    defeat();
+    qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
+    hero->attack3(*actual_ennemy);
+
+    qDebug() << "Ennemy life points after attack: " << actual_ennemy->getLifePoint();
+
+    if (actual_ennemy->isDead()){
+
+        qDebug() << "Ennemy is dead";
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " has defited !");
+        try{
+
+            get_next_ennemy();
+
+        }
+        catch(double e){
+
+            victory();
+
+        }
+
+
+    }
+    else{
+
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->enemyAttack(*hero));
+
+        if (hero->isDead()){
+
+            defeat();
+
+        }
+
+    }
+
 
 }
 
@@ -228,6 +294,40 @@ void MainWindow::attack4(){
 
     qDebug() << "Attack 4 pressed";
     Information->append("You choose " + Attack4->text());
+    qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
+    hero->attack4(*actual_ennemy);
+
+    qDebug() << "Ennemy life points after attack: " << actual_ennemy->getLifePoint();
+
+    if (actual_ennemy->isDead()){
+
+        qDebug() << "Ennemy is dead";
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " has defited !");
+        try{
+
+            get_next_ennemy();
+
+        }
+        catch(double e){
+
+            victory();
+
+        }
+
+
+    }
+    else{
+
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->enemyAttack(*hero));
+
+        if (hero->isDead()){
+
+            defeat();
+
+        }
+
+    }
+
 
 }
 
