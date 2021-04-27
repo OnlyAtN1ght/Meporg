@@ -60,11 +60,6 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-FORMS += \
-    aboutwindow.ui \
-    fightwindow.ui \
-    mainwindow.ui
-
 DISTFILES += \
     Meporg.pro.user \
     TODO \
