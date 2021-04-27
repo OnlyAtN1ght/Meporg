@@ -68,10 +68,6 @@ void MainWindow::wolf_function(){
 
 void MainWindow::play(std::string type, std::string name, std::string job){
 
-    setupUi_Loading(this);
-    setFixedSize(1024, 768);
-    setWindowTitle("MePorg - Loading...");
-
     srand((unsigned int)time(0));
     int nb_ennemies = rand() % 30 + 1;
 
@@ -172,8 +168,6 @@ void MainWindow::get_next_ennemy(){
 
 void MainWindow::attack1(){
 
-    setupUi_Win(this);
-    /*
     qDebug() << "Attack 1 pressed";
     Information->append("You choose " + Attack1->text());
     qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
@@ -193,9 +187,7 @@ void MainWindow::attack1(){
         }
         catch(double e){
 
-            setupUi_Win(this) ;
-            setFixedSize(1024, 768);
-            setWindowTitle("MePorg");
+            victory();
 
         }
 
@@ -208,21 +200,18 @@ void MainWindow::attack1(){
 
         if (hero->isDead()){
 
-            setupUi_Defeat(this) ;
-            setFixedSize(1024, 768);
-            setWindowTitle("MePorg");
+            defeat();
 
         }
 
     }
-
-*/
 }
 
 void MainWindow::attack2(){
 
     qDebug() << "Attack 2 pressed";
     Information->append("You choose " + Attack2->text());
+    victory();
 
 }
 
@@ -230,6 +219,7 @@ void MainWindow::attack3(){
 
     qDebug() << "Attack 3 pressed";
     Information->append("You choose " + Attack3->text());
+    defeat();
 
 }
 
@@ -274,7 +264,7 @@ void MainWindow::reset(){
 
 QString MainWindow::get_name(){
 
-    QString text = QInputDialog::getText(this,"Type your name","Name ?");
+    QString text = QInputDialog::getText(this,"Type your name","Name ?                                                  ");
     if(text == ""){
 
         QMessageBox::warning(this, "Error", "You have to take a name");
@@ -282,6 +272,58 @@ QString MainWindow::get_name(){
 
     }
     return text;
+
+}
+
+void MainWindow::victory(){
+
+    musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/victory_sound.wav"));
+    musique->play();
+    QMessageBox msg;
+    msg.setWindowTitle("Victory !");
+    msg.setText("You win ! GG WP ! Feel free to try again, it may be harder next time :)");
+    msg.setIcon(QMessageBox::Information);
+    msg.setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
+
+    QPushButton *restart = new QPushButton();
+    restart->setObjectName("button_restart");
+    restart->setText("Restart");
+    QPushButton *exit = new QPushButton();
+    exit->setObjectName("button_exit");
+    exit->setText("Exit");
+
+    connect(exit, &QPushButton::clicked, this, &MainWindow::exit);
+    connect(restart, &QPushButton::clicked, this, &MainWindow::reset);
+
+    msg.addButton(exit, QMessageBox::NoRole);
+    msg.addButton(restart, QMessageBox::YesRole);
+    msg.exec();
+
+}
+
+void MainWindow::defeat(){
+
+    musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/death_sound.wav"));
+    musique->play();
+    QMessageBox msg;
+    msg.setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
+    msg.setWindowTitle("Defeat...");
+    msg.setText("You loose... Feel free to try again, next time will be yours !");
+    msg.setIcon(QMessageBox::Information);
+
+    QPushButton *restart = new QPushButton();
+    restart->setObjectName("button_restart");
+    restart->setText("Restart");
+    QPushButton *exit = new QPushButton();
+    exit->setObjectName("button_exit");
+    exit->setText("Exit");
+
+    connect(exit, &QPushButton::clicked, this, &MainWindow::exit);
+    connect(restart, &QPushButton::clicked, this, &MainWindow::reset);
+
+    msg.addButton(exit, QMessageBox::NoRole);
+    msg.addButton(restart, QMessageBox::YesRole);
+    msg.exec();
 
 }
 
