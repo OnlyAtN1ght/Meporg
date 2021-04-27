@@ -1,6 +1,9 @@
 #include "enemyhuman.h"
 
-EnemyHuman::EnemyHuman()
-{
+EnemyHuman::EnemyHuman(){
 
+}
+
+QString EnemyHuman::getType(){
+    return "Human";
 }

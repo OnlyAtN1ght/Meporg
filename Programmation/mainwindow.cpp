@@ -4,10 +4,10 @@
 #include <QThread>
 #include <cstdlib>
 
-std::list<Entity*>::iterator it;
+std::vector<Entity*>::iterator it;
 int ennemies_size;
 Entity *hero;
-std::list<Entity*> ennemies;
+std::vector<Entity*> ennemies;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

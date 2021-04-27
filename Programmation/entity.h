@@ -46,6 +46,9 @@ public:
     Job getJob();
     void setJob(Job job);
 
+    QString getType();
+    void setType(QString new_name);
+
     // Function
     bool isDead();
 
@@ -69,6 +72,8 @@ private:
     std::string name_attack_2;
     std::string name_attack_3;
     std::string name_attack_4;
+
+    QString type;
 
 };
 

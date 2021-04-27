@@ -7,6 +7,7 @@ class EnemyWerewolf:public Werewolf{
 public:
     EnemyWerewolf();
     EnemyWerewolf(int level);
+    QString getType();
 };
 
 #endif // ENEMYWEREWOLF_H
