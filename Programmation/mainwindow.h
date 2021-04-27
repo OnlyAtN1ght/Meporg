@@ -306,6 +306,17 @@ public:
         QMetaObject::connectSlotsByName(MainWindow);
     }
 
+    void setupUi_Win(QMainWindow *MainWindow){
+
+        empty_gui();
+
+    }
+
+    void setupUi_Defeat(QMainWindow *MainWindow){
+
+
+
+    }
 
 private:
 
@@ -326,6 +337,20 @@ private:
     void attack3();
     void attack4();
     void get_next_ennemy();
+    void empty_gui(){
+
+        delete Attack1;
+        delete Attack2;
+        delete Attack3;
+        delete Attack4;
+        delete Information;
+        delete Enemy;
+        delete Enemy_life;
+        delete Hero;
+        delete Hero_life;
+
+
+    }
 
 };
 

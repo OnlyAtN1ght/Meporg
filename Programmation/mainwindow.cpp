@@ -172,13 +172,19 @@ void MainWindow::get_next_ennemy(){
 
 void MainWindow::attack1(){
 
+    setupUi_Win(this);
+    /*
     qDebug() << "Attack 1 pressed";
     Information->append("You choose " + Attack1->text());
+    qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
     hero->attack1(*actual_ennemy);
+
+    qDebug() << "Ennemy life points after attack: " << actual_ennemy->getLifePoint();
     Enemy_life->setText(QString::number(actual_ennemy->getLifePoint()));
 
     if (actual_ennemy->isDead()){
 
+        qDebug() << "Ennemy is dead";
         Information->append(QString::fromStdString(actual_ennemy->getName()) + " has defited !");
         try{
 
@@ -197,13 +203,20 @@ void MainWindow::attack1(){
     }
     else{
 
-        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->attack(*hero));
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->enemyAttack(*hero));
         Hero_life->setText(QString::number(hero->getLifePoint()));
+
+        if (hero->isDead()){
+
+            setupUi_Defeat(this) ;
+            setFixedSize(1024, 768);
+            setWindowTitle("MePorg");
+
+        }
 
     }
 
-
-
+*/
 }
 
 void MainWindow::attack2(){
