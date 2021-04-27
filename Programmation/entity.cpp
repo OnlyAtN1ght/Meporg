@@ -244,6 +244,14 @@ bool Entity::isDead(){
     return this->getLifePoint() <= 0;
 }
 
+void Entity::setType(QString type){
+    this->type = type;
+}
+
+QString Entity::getType(){
+    return this->type;
+}
+
 
 std::string Entity::getNameAttack1(){
    return this->name_attack_1;

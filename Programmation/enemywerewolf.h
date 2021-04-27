@@ -7,6 +7,7 @@ class EnemyWerewolf:public Werewolf{
 public:
     EnemyWerewolf();
     EnemyWerewolf(int level);
+    EnemyWerewolf(QString type);
     QString getType();
 };
 

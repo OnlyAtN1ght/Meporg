@@ -50,16 +50,16 @@ std::vector<Entity*> Game::createEnemies(int number_enemies){
     for (int i = 0; i < number_enemies; i++){
         int class_enemy = std::rand() % 4;
         if (class_enemy == 1){
-            Entity* enemy = new EnemyDemon();
+            Entity* enemy = new EnemyDemon("Demon");
 
         } else if (class_enemy == 2) {
-            Entity* enemy = new EnemyHuman();
+            Entity* enemy = new EnemyHuman("Human");
 
         } else if (class_enemy == 3) {
-            Entity* enemy = new EnemyWolf();
+            Entity* enemy = new EnemyWolf("Wolf");
 
         } else if (class_enemy == 4) {
-            Entity* enemy = new EnemyWerewolf();
+            Entity* enemy = new EnemyWerewolf("Werewolf");
 
         }
 

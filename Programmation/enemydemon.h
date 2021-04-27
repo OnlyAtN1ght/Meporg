@@ -8,6 +8,7 @@ class EnemyDemon:public Demon{
 public:
     EnemyDemon();
     EnemyDemon(int level);
+    EnemyDemon(QString type);
     QString getType();
 };
 

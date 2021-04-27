@@ -7,6 +7,7 @@ class EnemyHuman:public Human{
 public:
     EnemyHuman();
     EnemyHuman(int level);
+    EnemyHuman(QString type);
     QString getType();
 };
 
