@@ -7,6 +7,7 @@ class EnemyWolf:public Wolf{
 public:
     EnemyWolf();
     EnemyWolf(int level);
+    QString getType();
 };
 
 #endif // ENEMYWOLF_H

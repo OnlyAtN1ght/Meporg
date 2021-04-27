@@ -4,3 +4,7 @@ EnemyWerewolf::EnemyWerewolf()
 {
 
 }
+
+QString Werewolf::getType(){
+    return "Werewolf";
+}
