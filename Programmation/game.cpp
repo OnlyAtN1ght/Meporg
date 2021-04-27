@@ -43,8 +43,8 @@ Entity* Game::createHero(std::string name,std::string class_type,std::string job
 
 };
 
-std::list<Entity*> Game::createEnemies(int number_enemies){
-    std::list<Entity*> enemies;
+std::vector<Entity*> Game::createEnemies(int number_enemies){
+    std::vector<Entity*> enemies;
     Entity* enemy;
 
     for (int i = 0; i < number_enemies; i++){

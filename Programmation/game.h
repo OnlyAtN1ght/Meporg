@@ -3,6 +3,7 @@
 
 #include <string>
 #include <list>
+#include <vector>
 #include <qDebug>
 
 #include "entity.h"
@@ -21,7 +22,7 @@ class Game
 public:
     Game();
     static Entity* createHero(std::string name,std::string class_type,std::string job);
-    static std::list<Entity*> createEnemies(int number_enemies);
+    static std::vector<Entity*> createEnemies(int number_enemies);
 
 };
 

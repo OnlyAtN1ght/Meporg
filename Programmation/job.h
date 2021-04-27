@@ -3,7 +3,8 @@
 
 #include <string>
 #include <QDebug>
-#include<QFile>
+#include <QFile>
+#include <QJsonDocument>
 
 
 class Job

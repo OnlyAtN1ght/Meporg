@@ -5,6 +5,18 @@ Job::Job(){}
 
 Job::Job(std::string name_job){
     qDebug() << "JOB CREATEAUDIJOADKZ";
+    QFile file("data.json");
+
+   // test if open
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+            qDebug() << "FIle not opened OPENED";
+            return;}
+
+
+    //qDebug() << val;
+    //QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
+
+
     if (name_job == "Teacher"){
         this->bonus_attack_point = 5;
         this->bonus_brain_point = 10;
