@@ -4,10 +4,10 @@
 #include <QThread>
 #include <cstdlib>
 
-std::list<Entity*>::iterator it;
-int ennemies_size;
 Entity *hero;
-std::list<Entity*> ennemies;
+std::vector<Entity*> ennemies;
+Entity *actual_ennemy;
+int actual_ennemy_position = -1;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -116,39 +116,7 @@ void MainWindow::play(std::string type, std::string name, std::string job){
 
     }
 
-
-    it = ennemies.begin();
-    ennemies_size = ennemies.size();
-
-    EnemyDemon *ee = dynamic_cast<EnemyDemon*>(*it);
-    EnemyHuman *ff = dynamic_cast<EnemyHuman*>(*it);
-    EnemyWolf *gg = dynamic_cast<EnemyWolf*>(*it);
-    EnemyWerewolf *hh = dynamic_cast<EnemyWerewolf*>(*it);
-
-    if (ee != nullptr){
-
-        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/demon.png"));
-        qDebug() << "Loading demon picture into Enemy";
-
-    }
-    else if (ff != nullptr){
-
-        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/human.png"));
-        qDebug() << "Loading human picture into Enemy";
-
-    }
-    else if (gg != nullptr){
-
-        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/wolf.png"));
-        qDebug() << "Loading wolf picture into Enemy";
-
-    }
-    else if (hh != nullptr){
-
-        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/werewolf.png"));
-        qDebug() << "Loading werewolf picture into Enemy";
-
-    }
+    get_next_ennemy();
 
     Attack1->setText(QString::fromStdString(hero->getNameAttack1()));
     Attack2->setText(QString::fromStdString(hero->getNameAttack2()));
@@ -159,6 +127,41 @@ void MainWindow::play(std::string type, std::string name, std::string job){
     connect(Attack2, &QPushButton::clicked, this, &MainWindow::attack2);
     connect(Attack3, &QPushButton::clicked, this, &MainWindow::attack3);
     connect(Attack4, &QPushButton::clicked, this, &MainWindow::attack4);
+
+}
+
+void MainWindow::get_next_ennemy(){
+
+    qDebug() << "Getting next ennemy";
+    actual_ennemy_position += 1;
+    actual_ennemy = ennemies.at(actual_ennemy_position);
+    qDebug() << actual_ennemy;
+    qDebug() << "Checking ennemy type";
+
+    if (instanceof<EnemyDemon>(actual_ennemy)){
+
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/demon.png"));
+        qDebug() << "Loading demon picture into Enemy";
+
+    }
+    else if (instanceof<EnemyHuman>(actual_ennemy)){
+
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/human.png"));
+        qDebug() << "Loading human picture into Enemy";
+
+    }
+    else if (instanceof<EnemyHuman>(actual_ennemy)){
+
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/wolf.png"));
+        qDebug() << "Loading wolf picture into Enemy";
+
+    }
+    else if (instanceof<EnemyHuman>(actual_ennemy)){
+
+        Enemy->setPixmap(QPixmap(QApplication::applicationDirPath() + "/ressources/werewolf.png"));
+        qDebug() << "Loading werewolf picture into Enemy";
+
+    }
 
 }
 
