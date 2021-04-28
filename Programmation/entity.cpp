@@ -15,12 +15,23 @@ void Entity::attack1(Entity entity_attacked){
 
     int total_dommages = this->getAttackPoint();
 
+    qDebug() << "TotalDmg:  " << total_dommages;
+
     // We use the strength to increase the damages
     total_dommages *= this->getStrengthPoint();
 
+    qDebug() << "TotalDmg:  " << total_dommages;
+
 
     int entity_attacked_life = entity_attacked.getLifePoint();
+
+    qDebug() << "entity_attacked_life:  " << entity_attacked_life;
+
+    qDebug() << entity_attacked_life - total_dommages;
+
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
+
+    qDebug() << entity_attacked.getLifePoint();
 
 };
 
@@ -118,6 +129,7 @@ bool Entity::getSex(){
 };
 
 int Entity::getAttackPoint(){
+    return this->attack_point;
     // We need to keep track of items and job
     int total_attack = 0;
     total_attack += this->attack_point;
@@ -145,6 +157,9 @@ void Entity::setAttackPoint(int new_attack_point){
 };
 
 int Entity::getLifePoint(){
+    return this->life_point;
+
+
     int life = 0;
     life += this->life_point;
 
@@ -169,6 +184,7 @@ void Entity::setLifePoint(int new_life_point){
 };
 
 int Entity::getBrainPoint(){
+    return this->brain_point;
     // We need to keep track of items and job
     int total_brain = 0;
     total_brain += this->brain_point;
@@ -196,6 +212,7 @@ void Entity::setBrainPoint(int new_brain_point){
 };
 
 int Entity::getStrengthPoint(){
+    return this->strength_point;
     // We need to keep track of items and job
     int total_brain = 0;
     total_brain += this->strength_point;
@@ -273,26 +290,38 @@ QString Entity::getNameAttack4(){
 
 
 QString Entity::enemyAttack(Entity enemy_attacked){
-    int attack = std::rand() % 4;
+    int attack = std::rand() % 3;
+    /*switch(expression) {
+      case x:
+        // code block
+        break;
+      case y:
+        // code block
+        break;
+      default:
+        // code block
+    }*/
 
-    if (attack == 1){
+    // TODO : switch
+    if (attack == 0){
         this->attack1(enemy_attacked);
         return this->getNameAttack1();
 
-    } else if (attack == 2){
+    } else if (attack == 1){
         this->attack2(enemy_attacked);
         return this->getNameAttack2();
 
-    } else if (attack == 3){
+    } else if (attack == 2){
         this->attack3(enemy_attacked);
         return this->getNameAttack3();
 
-    } else if (attack == 4){
+    } else if (attack == 3){
         this->attack4(enemy_attacked);
         return this->getNameAttack4();
 
-    } else {
 
+    }else {
+        qDebug() << " Error entity l.312 random ";
     }
 };
 

@@ -1,6 +1,7 @@
 - Name enemies
-- Constructor enemies 
+
 - Default value attributes (Hero,Ennemy)
 - Created own list (mieux que std::list)
-- Redefinir le + pour les iems
+- Redefinir le + pour les items
 - Random attack enemy (return attack name QString)
+- Refaire Getters (life, strength,attack,brain) in Entity

@@ -33,10 +33,29 @@ EnemyHuman::EnemyHuman(QString type){
         qDebug() << "Parse not failed";
     }
 
-    this->setLifePoint(doc["DEFAULT"]["default_life"].toInt());
-    this->setAttackPoint(doc["DEFAULT"]["default_attack"].toInt());
-    this->setBrainPoint(doc["DEFAULT"]["default_brain"].toInt());
-    this->setStrengthPoint(doc["DEFAULT"]["default_strength"].toInt());
+    if (doc["DEFAULT"]["default_life"].toInt() >= 100000){
+        this->setLifePoint(10);
+    } else {
+        this->setLifePoint(doc["DEFAULT"]["default_life"].toInt());
+    }
+
+    if (doc["DEFAULT"]["default_attack"].toInt() >= 100000){
+        this->setAttackPoint(10);
+    } else{
+        this->setAttackPoint(doc["DEFAULT"]["default_attack"].toInt());
+    }
+
+    if (doc["DEFAULT"]["default_brain"].toInt() >= 10000){
+        this->setBrainPoint(10);
+    } else {
+        this->setBrainPoint(doc["DEFAULT"]["default_brain"].toInt());
+    }
+
+    if (doc["DEFAULT"]["default_strength"].toInt() >= 100000){
+        this->setStrengthPoint(10);
+    } else {
+        this->setStrengthPoint(doc["DEFAULT"]["default_strength"].toInt());
+    }
 
     qDebug() << this->getLifePoint();
     qDebug() << this->getAttackPoint();
