@@ -136,6 +136,11 @@ void MainWindow::get_next_ennemy(){
 
     qDebug() << "Getting next ennemy";
     actual_ennemy_position += 1;
+    if (actual_ennemy_position >= ennemies.size()){
+
+        throw std::string("Il n'y a plus d'ennemi à combattre");
+
+    }
     actual_ennemy = ennemies.at(actual_ennemy_position);
 
     qDebug() << "Checking ennemy type";
@@ -189,8 +194,9 @@ void MainWindow::attack1(){
             get_next_ennemy();
 
         }
-        catch(double e){
+        catch(std::string e){
 
+            qDebug() << QString::fromStdString(e);
             victory();
 
         }
@@ -231,8 +237,9 @@ void MainWindow::attack2(){
             get_next_ennemy();
 
         }
-        catch(double e){
+        catch(std::string e){
 
+            qDebug() << QString::fromStdString(e);
             victory();
 
         }
@@ -273,8 +280,9 @@ void MainWindow::attack3(){
             get_next_ennemy();
 
         }
-        catch(double e){
+        catch(std::string e){
 
+            qDebug() << QString::fromStdString(e);
             victory();
 
         }
@@ -316,8 +324,9 @@ void MainWindow::attack4(){
             get_next_ennemy();
 
         }
-        catch(double e){
+        catch(std::string e){
 
+            qDebug() << QString::fromStdString(e);
             victory();
 
         }

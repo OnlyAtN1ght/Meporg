@@ -81,7 +81,7 @@ public:
         QFont font2(family);
 
         musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/accueil/start_sound.wav"));
-        musique->setVolume(100);
+        musique->setVolume(20);
         musique->play();
 
 
