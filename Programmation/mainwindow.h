@@ -332,6 +332,7 @@ private:
     void get_next_ennemy();
     void defeat();
     void victory();
+    void attackEnable(bool info);
 
 };
 

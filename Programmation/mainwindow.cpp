@@ -136,6 +136,11 @@ void MainWindow::get_next_ennemy(){
 
     qDebug() << "Getting next ennemy";
     actual_ennemy_position += 1;
+    if (actual_ennemy_position >= ennemies.size()){
+
+        throw std::string("Il n'y a plus d'ennemi à combattre");
+
+    }
     actual_ennemy = ennemies.at(actual_ennemy_position);
 
     qDebug() << "Checking ennemy type";
@@ -172,6 +177,7 @@ void MainWindow::get_next_ennemy(){
 
 void MainWindow::attack1(){
 
+    attackEnable(false);
     qDebug() << "Attack 1 pressed";
     Information->append("You choose " + Attack1->text());
     qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
@@ -188,8 +194,9 @@ void MainWindow::attack1(){
             get_next_ennemy();
 
         }
-        catch(double e){
+        catch(std::string e){
 
+            qDebug() << QString::fromStdString(e);
             victory();
 
         }
@@ -207,10 +214,13 @@ void MainWindow::attack1(){
         }
 
     }
+
+    attackEnable(true);
 }
 
 void MainWindow::attack2(){
 
+    attackEnable(false);
     qDebug() << "Attack 2 pressed";
     Information->append("You choose " + Attack2->text());
     qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
@@ -227,8 +237,9 @@ void MainWindow::attack2(){
             get_next_ennemy();
 
         }
-        catch(double e){
+        catch(std::string e){
 
+            qDebug() << QString::fromStdString(e);
             victory();
 
         }
@@ -246,11 +257,13 @@ void MainWindow::attack2(){
         }
 
     }
+    attackEnable(true);
 
 }
 
 void MainWindow::attack3(){
 
+    attackEnable(false);
     qDebug() << "Attack 3 pressed";
     Information->append("You choose " + Attack3->text());
     qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
@@ -267,8 +280,9 @@ void MainWindow::attack3(){
             get_next_ennemy();
 
         }
-        catch(double e){
+        catch(std::string e){
 
+            qDebug() << QString::fromStdString(e);
             victory();
 
         }
@@ -286,13 +300,14 @@ void MainWindow::attack3(){
         }
 
     }
+    attackEnable(true);
 
 
 }
 
 void MainWindow::attack4(){
 
-
+    attackEnable(false);
     qDebug() << "Attack 4 pressed";
     Information->append("You choose " + Attack4->text());
     qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
@@ -309,8 +324,9 @@ void MainWindow::attack4(){
             get_next_ennemy();
 
         }
-        catch(double e){
+        catch(std::string e){
 
+            qDebug() << QString::fromStdString(e);
             victory();
 
         }
@@ -328,7 +344,29 @@ void MainWindow::attack4(){
         }
 
     }
+    attackEnable(true);
 
+
+}
+
+void MainWindow::attackEnable(bool info){
+
+    if (!info){
+
+        Attack1->setEnabled(false);
+        Attack2->setEnabled(false);
+        Attack3->setEnabled(false);
+        Attack4->setEnabled(false);
+
+    }
+    else{
+
+        Attack1->setEnabled(true);
+        Attack2->setEnabled(true);
+        Attack3->setEnabled(true);
+        Attack4->setEnabled(true);
+
+    }
 
 }
 
