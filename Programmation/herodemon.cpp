@@ -15,4 +15,7 @@ HeroDemon::HeroDemon(std::string name,int life,int attack,int strength, int brai
     this->setAi(false);
 
 
+    // Set the type
+    this->setType(QString("Demon"));
+
 }

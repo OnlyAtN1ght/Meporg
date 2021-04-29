@@ -189,9 +189,6 @@ void MainWindow::attack1(){
 
     if (actual_ennemy->isDead()){
 
-
-
-
     }
     else{
 

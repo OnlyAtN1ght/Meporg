@@ -283,8 +283,18 @@ QString Entity::getType(){
 
 
 QString Entity::getNameAttack1(){
-   return QString("name_attack_1_place_holder");
-   return this->name_attack_1;
+    QJsonDocument doc = Reader::readDataJson();
+
+    qDebug() << "[CCP] the type of the attaquer is : " << this->getType();
+    if (this->getType() == QString("Demon")){
+        return doc["name_attacks"]["Demon"]["name_attack_1"].toString();
+    } //else (this->getType() == QString("Human")){
+
+    //}
+
+
+    return QString("name_attack_1_place_holder");
+    return this->name_attack_1;
 };
 
 QString Entity::getNameAttack2(){
@@ -305,9 +315,10 @@ QString Entity::getNameAttack4(){
 
 QString Entity::enemyAttack(Entity enemy_attacked){
     int attack = std::rand() % 3;
-    /*switch(expression) {
-      case x:
-        // code block
+    /*switch(attack) {
+      case 0:
+        this->attack1(enemy_attacked);
+        return this->getNameAttack1();
         break;
       case y:
         // code block

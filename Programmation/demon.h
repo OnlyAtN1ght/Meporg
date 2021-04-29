@@ -7,7 +7,8 @@
 class Demon: public Entity{
 public:
     Demon();
-    //void attack1(Entity entity_attacked) override;
+    //void attack1(Entity entity_attacked) override
+
 };
 
 #endif // DEMON_H
