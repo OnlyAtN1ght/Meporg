@@ -59,6 +59,9 @@ public:
 
     QString enemyAttack(Entity enemy_attacked);
 
+
+    void setDefaultLife();
+
 private:
     std::string name;
     bool ai;

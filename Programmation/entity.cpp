@@ -12,29 +12,28 @@ Entity::Entity(){};
 
 int Entity::attack1(Entity entity_attacked){
     // Return the new life point of the attacked enemy
-    qDebug() << "Début attack 1";
+    //qDebug() << "Début attack 1";
 
     int total_dommages = this->getAttackPoint();
 
-    qDebug() << "TotalDmg:  " << total_dommages;
+    //qDebug() << "TotalDmg:  " << total_dommages;
 
     // We use the strength to increase the damages
     total_dommages *= this->getStrengthPoint();
 
-    qDebug() << "TotalDmg:  " << total_dommages;
+    //qDebug() << "TotalDmg:  " << total_dommages;
 
 
     int entity_attacked_life = entity_attacked.getLifePoint();
 
-    qDebug() << "entity_attacked_life:  " << entity_attacked_life;
+    //qDebug() << "entity_attacked_life:  " << entity_attacked_life;
 
-    qDebug() << entity_attacked_life - total_dommages;
+    //qDebug() << entity_attacked_life - total_dommages;
 
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
 
-    qDebug() << entity_attacked.getLifePoint();
+    //qDebug() << entity_attacked.getLifePoint();
 
-    return 1;
     return entity_attacked_life - total_dommages;
 
 };
@@ -340,3 +339,6 @@ QString Entity::enemyAttack(Entity enemy_attacked){
     }
 };
 
+void Entity::setDefaultLife(){
+    this->setLifePoint(10);
+}

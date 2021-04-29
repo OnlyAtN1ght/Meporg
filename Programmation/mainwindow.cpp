@@ -182,7 +182,8 @@ void MainWindow::attack1(){
     qDebug() << "Attack 1 pressed";
     Information->append("You choose " + Attack1->text());
     qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
-    hero->attack1(*actual_ennemy);
+    int new_life_point = hero->attack1(*actual_ennemy);
+    actual_ennemy->setLifePoint(new_life_point);
     Enemy_life->setValue(actual_ennemy->getLifePoint());
     qDebug() << "Ennemy life points after attack: " << actual_ennemy->getLifePoint();
 
