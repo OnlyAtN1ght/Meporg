@@ -11,5 +11,8 @@ HeroDemon::HeroDemon(std::string name,int life,int attack,int strength, int brai
 
     qDebug() << this->getLifePoint();
 
+    // Set AI
+    this->setAi(false);
+
 
 }

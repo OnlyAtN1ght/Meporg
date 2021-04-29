@@ -61,5 +61,8 @@ EnemyHuman::EnemyHuman(QString type){
     qDebug() << this->getAttackPoint();
     qDebug() << this->getBrainPoint();
     qDebug() << this->getStrengthPoint();
+
+    // Set AI
+    this->setAi(true);
 }
 

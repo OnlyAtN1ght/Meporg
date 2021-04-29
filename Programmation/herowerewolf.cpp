@@ -7,4 +7,7 @@ HeroWerewolf::HeroWerewolf(std::string name,int life,int attack,int strength, in
     this->setAttackPoint(attack);
     this->setStrengthPoint(strength);
     this->setBrainPoint(brain);
+
+    // Set AI
+    this->setAi(false);
 }

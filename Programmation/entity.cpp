@@ -113,6 +113,9 @@ void Entity::attack4(Entity entity_attacked){
 
 //Getters/Setters
 std::string Entity::getName(){
+    if (this->getAi()){
+        return "place_holder_name_enemy_entity";
+    }
     return this->name;
 };
 
@@ -123,6 +126,10 @@ void Entity::setName(std::string new_name){
 bool Entity::getAi(){
     return this->ai;
 };
+
+void Entity::setAi(bool new_ai){
+    this->ai = new_ai;
+}
 
 bool Entity::getSex(){
     return this->sex;
@@ -273,18 +280,22 @@ QString Entity::getType(){
 
 
 QString Entity::getNameAttack1(){
+   return QString("name_attack_1_place_holder");
    return this->name_attack_1;
 };
 
 QString Entity::getNameAttack2(){
+   return QString("name_attack_2_place_holder");
    return this->name_attack_2;
 };
 
 QString Entity::getNameAttack3(){
+   return QString("name_attack_3_place_holder");
    return this->name_attack_3;
 };
 
 QString Entity::getNameAttack4(){
+   return QString("name_attack_4_place_holder");
    return this->name_attack_4;
 };
 

@@ -67,6 +67,10 @@ EnemyDemon::EnemyDemon(QString type){
     qDebug() << this->getStrengthPoint();
 
 
+    // Set AI
+    this->setAi(true);
+
+
 }
 
 
