@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 #include "game.h"
 #include <QDebug>
+#include <QPropertyAnimation>
 
 Entity *hero;
 std::vector<Entity*> ennemies;
 Entity *actual_ennemy;
-int actual_ennemy_position = -1;
+unsigned long long actual_ennemy_position = -1;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -134,6 +135,12 @@ void MainWindow::play(std::string type, std::string name, std::string job){
 
 void MainWindow::get_next_ennemy(){
 
+    QPropertyAnimation enemy_annimation(Enemy, "geometry");
+    enemy_annimation.setDuration(2000);
+    enemy_annimation.setKeyValueAt(0, QRect(0, 0, 100, 30));
+    enemy_annimation.setKeyValueAt(0.8, QRect(250, 250, 100, 30));
+    enemy_annimation.setKeyValueAt(1, QRect(0, 0, 100, 30));
+
     qDebug() << "Getting next ennemy";
     actual_ennemy_position += 1;
     if (actual_ennemy_position >= ennemies.size()){
@@ -170,6 +177,7 @@ void MainWindow::get_next_ennemy(){
 
     }
 
+    enemy_annimation.start();
     Information->append("A " + QString::fromStdString(actual_ennemy->getName()) + " has spawn ! What do you want to do ?");
     Enemy_life->setMaximum(actual_ennemy->getLifePoint());
     Enemy_life->setValue(actual_ennemy->getLifePoint());
