@@ -333,6 +333,7 @@ private:
     void defeat();
     void victory();
     void attackEnable(bool info);
+    void enemyDie();
 
 };
 
