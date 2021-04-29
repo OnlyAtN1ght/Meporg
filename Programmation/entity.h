@@ -12,7 +12,7 @@ class Entity
 public:
     Entity(std::string name,int life,int attack,int strength, int brain);
     Entity();
-    virtual void attack1(Entity entity_attacked);
+    int attack1(Entity entity_attacked);
     virtual void attack2(Entity entity_attacked);
     virtual void attack3(Entity entity_attacked);
     virtual void attack4(Entity entity_attacked);

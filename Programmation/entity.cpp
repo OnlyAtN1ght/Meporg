@@ -10,7 +10,8 @@ Entity::Entity(std::string name,int life,int attack,int strength, int brain){
 
 Entity::Entity(){};
 
-void Entity::attack1(Entity entity_attacked){
+int Entity::attack1(Entity entity_attacked){
+    // Return the new life point of the attacked enemy
     qDebug() << "Début attack 1";
 
     int total_dommages = this->getAttackPoint();
@@ -32,6 +33,9 @@ void Entity::attack1(Entity entity_attacked){
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
 
     qDebug() << entity_attacked.getLifePoint();
+
+    return 1;
+    return entity_attacked_life - total_dommages;
 
 };
 

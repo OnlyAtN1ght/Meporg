@@ -6,7 +6,7 @@
 class Wolf:virtual public Entity{
 public:
     Wolf();
-    void attack1(Entity entity_attacked) override;
+    //void attack1(Entity entity_attacked);
 };
 
 #endif // WOLF_H

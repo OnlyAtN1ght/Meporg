@@ -7,8 +7,8 @@
 class Werewolf:public Human,public Wolf{
 public:
     Werewolf();
-    void attack1(Entity entity_attacked);
-    void attack2(Entity entity_attacked);
+    //void attack1(Entity entity_attacked);
+    //void attack2(Entity entity_attacked);
 };
 
 #endif // WEREWOLF_H

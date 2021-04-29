@@ -2,6 +2,6 @@
 
 Wolf::Wolf(){}
 
-void Wolf::attack1(Entity entity_attacked){
+/*void Wolf::attack1(Entity entity_attacked){
 
-};
+};*/
