@@ -81,7 +81,7 @@ public:
         QFont font2(family);
 
         musique->setMedia(QUrl("file:///" + QApplication::applicationDirPath() + "/ressources/accueil/start_sound.wav"));
-        musique->setVolume(20);
+        musique->setVolume(100);
         musique->play();
 
 
@@ -332,6 +332,7 @@ private:
     void get_next_ennemy();
     void defeat();
     void victory();
+    void attackEnable(bool info);
 
 };
 
