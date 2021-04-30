@@ -6,6 +6,7 @@
 class HeroWerewolf:public Werewolf{
 public:
     HeroWerewolf(std::string name,int life,int attack,int strength, int brain);
+    HeroWerewolf(std::string name);
 };
 
 #endif // HEROWEREWOLF_H

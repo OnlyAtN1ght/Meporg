@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <tuple>
+
 #include "item.h"
 #include "job.h"
 
@@ -12,10 +14,11 @@ class Entity
 public:
     Entity(std::string name,int life,int attack,int strength, int brain);
     Entity();
+    Entity(std::string name);
     int attack1(Entity entity_attacked);
-    virtual void attack2(Entity entity_attacked);
-    virtual void attack3(Entity entity_attacked);
-    virtual void attack4(Entity entity_attacked);
+    int attack2(Entity entity_attacked);
+    int attack3(Entity entity_attacked);
+    int attack4(Entity entity_attacked);
 
 
     //Getters/Setters
@@ -57,10 +60,11 @@ public:
     QString getNameAttack3();
     QString getNameAttack4();
 
-    QString enemyAttack(Entity enemy_attacked);
+    std::tuple<QString,int> enemyAttack(Entity enemy_attacked);
 
 
     void setDefaultLife();
+    virtual ~Entity() = default;
 
 private:
     std::string name;

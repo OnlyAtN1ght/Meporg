@@ -192,7 +192,10 @@ void MainWindow::attack1(){
     }
     else{
 
-        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->enemyAttack(*hero));
+        auto [name_attack,dmg] = actual_ennemy->enemyAttack(*hero);
+        hero->setLifePoint(dmg);
+
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + name_attack);
         Hero_life->setValue(hero->getLifePoint());
         if (hero->isDead()){
 
@@ -211,7 +214,8 @@ void MainWindow::attack2(){
     qDebug() << "Attack 2 pressed";
     Information->append("You choose " + Attack2->text());
     qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
-    hero->attack2(*actual_ennemy);
+    int new_life_point = hero->attack2(*actual_ennemy);
+    actual_ennemy->setLifePoint(new_life_point);
     Enemy_life->setValue(actual_ennemy->getLifePoint());
     qDebug() << "Ennemy life points after attack: " << actual_ennemy->getLifePoint();
 
@@ -235,7 +239,10 @@ void MainWindow::attack2(){
     }
     else{
 
-        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->enemyAttack(*hero));
+        auto [name_attack,dmg] = actual_ennemy->enemyAttack(*hero);
+        hero->setLifePoint(dmg);
+
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + name_attack);
         Hero_life->setValue(hero->getLifePoint());
         if (hero->isDead()){
 
@@ -254,7 +261,8 @@ void MainWindow::attack3(){
     qDebug() << "Attack 3 pressed";
     Information->append("You choose " + Attack3->text());
     qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
-    hero->attack3(*actual_ennemy);
+    int new_life_point = hero->attack3(*actual_ennemy);
+    actual_ennemy->setLifePoint(new_life_point);
     Enemy_life->setValue(actual_ennemy->getLifePoint());
     qDebug() << "Ennemy life points after attack: " << actual_ennemy->getLifePoint();
 
@@ -278,7 +286,10 @@ void MainWindow::attack3(){
     }
     else{
 
-        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->enemyAttack(*hero));
+        auto [name_attack,dmg] = actual_ennemy->enemyAttack(*hero);
+        hero->setLifePoint(dmg);
+
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + name_attack);
         Hero_life->setValue(hero->getLifePoint());
         if (hero->isDead()){
 
@@ -298,7 +309,8 @@ void MainWindow::attack4(){
     qDebug() << "Attack 4 pressed";
     Information->append("You choose " + Attack4->text());
     qDebug() << "Ennemy life points before attack : " << actual_ennemy->getLifePoint();
-    hero->attack4(*actual_ennemy);
+    int new_life_point = hero->attack4(*actual_ennemy);
+    actual_ennemy->setLifePoint(new_life_point);
     Enemy_life->setValue(actual_ennemy->getLifePoint());
     qDebug() << "Ennemy life points after attack: " << actual_ennemy->getLifePoint();
 
@@ -321,8 +333,10 @@ void MainWindow::attack4(){
 
     }
     else{
+        auto [name_attack,dmg] = actual_ennemy->enemyAttack(*hero);
+        hero->setLifePoint(dmg);
 
-        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + actual_ennemy->enemyAttack(*hero));
+        Information->append(QString::fromStdString(actual_ennemy->getName()) + " used " + name_attack);
         Hero_life->setValue(hero->getLifePoint());
         if (hero->isDead()){
 

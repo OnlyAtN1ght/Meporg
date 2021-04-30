@@ -9,13 +9,17 @@ Entity* Game::createHero(std::string name,std::string class_type,std::string job
 
     // On crée la classe Hero avec la bonne classe
     if (class_type == "Demon"){
-        h = new HeroDemon(name,10,10,10,10);
+        h = new HeroDemon(name);
+        //h = new HeroDemon(name,10,10,10,10);
     } else if (class_type == "Human"){
-        h = new HeroHuman(name,10,10,10,10);
+        h = new HeroHuman(name);
+        //h = new HeroHuman(name,10,10,10,10);
     } else if (class_type == "Wolf"){
-        h = new HeroWolf(name,10,10,10,10);
+        h = new HeroWolf(name);
+        //h = new HeroWolf(name,10,10,10,10);
     } else if (class_type == "Werewolf"){
-        h = new HeroWerewolf(name,10,10,10,10);
+        h = new HeroWerewolf(name);
+        //h = new HeroWerewolf(name,10,10,10,10);
     } else {
         qDebug() << "Error  : mauvaise entrée dans la fonction Game.createHero";
         h = NULL;

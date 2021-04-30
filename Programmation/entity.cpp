@@ -8,109 +8,65 @@ Entity::Entity(std::string name,int life,int attack,int strength, int brain){
     this->brain_point = brain;
 };
 
+Entity::Entity(std::string name){
+
+};
+
 Entity::Entity(){};
 
 int Entity::attack1(Entity entity_attacked){
     // Return the new life point of the attacked enemy
-    //qDebug() << "Début attack 1";
 
     int total_dommages = this->getAttackPoint();
-
-    //qDebug() << "TotalDmg:  " << total_dommages;
 
     // We use the strength to increase the damages
     total_dommages *= this->getStrengthPoint();
 
-    //qDebug() << "TotalDmg:  " << total_dommages;
-
-
     int entity_attacked_life = entity_attacked.getLifePoint();
 
-    //qDebug() << "entity_attacked_life:  " << entity_attacked_life;
-
-    //qDebug() << entity_attacked_life - total_dommages;
-
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
-
-    //qDebug() << entity_attacked.getLifePoint();
 
     return entity_attacked_life - total_dommages;
 
 };
 
-void Entity::attack2(Entity entity_attacked){
-    // We need to keep track of items and job
-    int total_dommages = 0;
-    total_dommages += this->attack_point;
+int Entity::attack2(Entity entity_attacked){
+    int total_dommages = this->getAttackPoint();
 
-
-    // We get the damages from items
-    std::vector<Item>::iterator it = this->backpack.begin();
-    int size  = this->backpack.size();
-    for (int i = 0;i < size;i++){
-        // it points the i-th element of this->backpack
-        total_dommages += it->getAttackPoint();
-
-        // We go to the next item
-        std::advance(it, 1);
-    }
-
-    // We get the damages from the job
-    total_dommages += this->job.getBonusAttackPoint();
-
+    // We use the strength to increase the damages
+    total_dommages *= this->getStrengthPoint();
 
     int entity_attacked_life = entity_attacked.getLifePoint();
+
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
+
+    return entity_attacked_life - total_dommages;
 };
 
-void Entity::attack3(Entity entity_attacked){
-    // We need to keep track of items and job
-    int total_dommages = 0;
-    total_dommages += this->attack_point;
+int Entity::attack3(Entity entity_attacked){
+    int total_dommages = this->getAttackPoint();
 
-
-    // We get the damages from items
-    std::vector<Item>::iterator it = this->backpack.begin();
-    int size  = this->backpack.size();
-    for (int i = 0;i < size;i++){
-        // it points the i-th element of this->backpack
-        total_dommages += it->getAttackPoint();
-
-        // We go to the next item
-        std::advance(it, 1);
-    }
-
-    // We get the damages from the job
-    total_dommages += this->job.getBonusAttackPoint();
-
+    // We use the strength to increase the damages
+    total_dommages *= this->getStrengthPoint();
 
     int entity_attacked_life = entity_attacked.getLifePoint();
+
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
+
+    return entity_attacked_life - total_dommages;
 };
 
-void Entity::attack4(Entity entity_attacked){
-    // We need to keep track of items and job
-    int total_dommages = 0;
-    total_dommages += this->attack_point;
+int Entity::attack4(Entity entity_attacked){
+    int total_dommages = this->getAttackPoint();
 
-
-    // We get the damages from items
-    std::vector<Item>::iterator it = this->backpack.begin();
-    int size = this->backpack.size();
-    for (int i = 0;i < size;i++){
-        // it points the i-th element of this->backpack
-        total_dommages += it->getAttackPoint();
-
-        // We go to the next item
-        std::advance(it, 1);
-    }
-
-    // We get the damages from the job
-    total_dommages += this->job.getBonusAttackPoint();
-
+    // We use the strength to increase the damages
+    total_dommages *= this->getStrengthPoint();
 
     int entity_attacked_life = entity_attacked.getLifePoint();
+
     entity_attacked.setLifePoint(entity_attacked_life - total_dommages);
+
+    return entity_attacked_life - total_dommages;
 };
 
 
@@ -313,41 +269,36 @@ QString Entity::getNameAttack4(){
 };
 
 
-QString Entity::enemyAttack(Entity enemy_attacked){
+std::tuple<QString,int> Entity::enemyAttack(Entity enemy_attacked){
     int attack = std::rand() % 3;
-    /*switch(attack) {
+
+    int dmg;
+
+    switch(attack) {
       case 0:
-        this->attack1(enemy_attacked);
-        return this->getNameAttack1();
+        dmg = this->attack1(enemy_attacked);
+        return {this->getNameAttack1(),dmg};
         break;
-      case y:
-        // code block
+
+      case 1:
+        dmg = this->attack2(enemy_attacked);
+        return {this->getNameAttack2(),dmg};
         break;
+
+      case 2:
+        dmg = this->attack3(enemy_attacked);
+        return {this->getNameAttack3(),dmg};
+        break;
+
+      case 3:
+        dmg = this->attack4(enemy_attacked);
+        return {this->getNameAttack4(),dmg};
+        break;
+
       default:
-        // code block
-    }*/
-
-    // TODO : switch
-    if (attack == 0){
-        this->attack1(enemy_attacked);
-        return this->getNameAttack1();
-
-    } else if (attack == 1){
-        this->attack2(enemy_attacked);
-        return this->getNameAttack2();
-
-    } else if (attack == 2){
-        this->attack3(enemy_attacked);
-        return this->getNameAttack3();
-
-    } else if (attack == 3){
-        this->attack4(enemy_attacked);
-        return this->getNameAttack4();
-
-
-    }else {
-        qDebug() << " Error entity l.312 random ";
+        qDebug() << " Error entity l.300 random ";
     }
+
 };
 
 void Entity::setDefaultLife(){

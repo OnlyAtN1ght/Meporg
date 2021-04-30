@@ -8,6 +8,7 @@
 class HeroDemon:public Demon{
 public:
     HeroDemon(std::string name,int life,int attack,int strength, int brain);
+    HeroDemon(std::string name);
 };
 
 #endif // HERODEMON_H
